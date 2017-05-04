@@ -1,0 +1,9 @@
+// Placeholders
+::-webkit-input-placeholder {color: $Color__placeholder }
+:-moz-placeholder { color: $Color__placeholder }
+::-moz-placeholder { color: $Color__placeholder }
+:-ms-input-placeholder { color: $Color__placeholder }
+
+// Fixes
+input:focus, select:focus, textarea:focus, button:focus { outline: none }
+::-ms-clear { display: none }

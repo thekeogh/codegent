@@ -1,0 +1,40 @@
+
+@mixin respond($media) {
+  @if $media == desktop {
+    @media (max-width: $Reponsive__desktop--min) { @content; }
+  }
+  @else if $media == all-devices {
+    @media (max-width: $Reponsive__tablet-portrait--max) { @content; }
+  }
+  @else if $media == all-phones {
+    @media (max-width: $Reponsive__phone-landscape--max) { @content; }
+  }
+  @else if $media == tablet-landscape {
+    @media (min-width: $Reponsive__tablet-landscape--min) and  (max-width: $Reponsive__tablet-landscape--max) { @content; }
+  }
+  @else if $media == tablet-portrait {
+    @media (min-width: $Reponsive__tablet-portrait--min) and (max-width: $Reponsive__tablet-portrait--max) { @content; }
+  }
+  @else if $media == phone-landscape {
+    @media (min-width: $Reponsive__phone-landscape--min) and (max-width: $Reponsive__phone-landscape--max) { @content; }
+  }
+  @else if $media == phone-portrait {
+    @media (max-width: $Reponsive__phone-portrait--max) { @content; }
+  }
+}
+
+/**
+ * Retina displays (@2x pixel ratio)
+ * 
+ * Render retina imagery for only devices that support it.
+ * 
+ */
+@mixin retina() {
+  @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (   min--moz-device-pixel-ratio: 2),
+    only screen and (     -o-min-device-pixel-ratio: 2/1),
+    only screen and (        min-device-pixel-ratio: 2),
+    only screen and (                min-resolution: 192dpi),
+    only screen and (                min-resolution: 2dppx) { @content; }
+}

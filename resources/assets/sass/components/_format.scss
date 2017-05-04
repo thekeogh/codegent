@@ -1,0 +1,33 @@
+.Format {
+  font-size: 16px;
+  line-height: 27px;
+  
+  ul, ol { margin-left: 34px }
+  ul { list-style: disc }
+  ol { list-style: decimal }
+  blockquote {
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: solid 6px $Color__text--muted;
+  }
+  hr {
+    height: 1px;
+    border: 0;
+    background: #000
+  }
+  a, a:visited {
+    color: red;
+    text-decoration: underline;
+    &:hover { text-decoration: none }
+  }
+  strong, h2, h3, h4, h5, h6 { @include bold }
+  h2, h3, h4, h5, h6 { margin: 0 0 18px }
+  h2 { font-size: 18px }
+  img { max-width: 100%; height: auto !important }
+
+  &--last {
+    p, ol, ul, blockquote, h2, h3, h4, h5, h6 {
+      &:last-child { margin-bottom: 0 }
+    }
+  }
+}

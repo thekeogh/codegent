@@ -1,0 +1,16 @@
+/**
+ * Font weights
+ */
+@mixin light { font-weight: 200 }
+@mixin regular { font-weight: 300 }
+@mixin bold { font-weight: 500 }
+
+/**
+ * Return a full CDN path to an asset
+ * 
+ * @param  {string} $path
+ * @return {string}
+ */
+@function cdn($path) {
+  @return url(#{$Path__cdn}#{$path});
+}

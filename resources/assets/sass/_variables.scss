@@ -1,38 +1,46 @@
+/**
+ * Colours
+ */
+// Blacks
+$Color__black--darkest: #282828;
 
-// Body
-$body-bg: #f5f8fa;
+// Greys
+$Color__grey_medium: #d3d3d3;
 
-// Borders
-$laravel-border-color: darken($body-bg, 10%);
-$list-group-border: $laravel-border-color;
-$navbar-default-border: $laravel-border-color;
-$panel-default-border: $laravel-border-color;
-$panel-inner-border: $laravel-border-color;
+// Config
+$Color__body--background: #fff;
+$Color__body--text: $Color__black--darkest;
+$Color__text--muted: $Color__grey_medium;
+$Color__selection--background: $Color__black--darkest;
+$Color__selection--text: #fff;
+$Color__placeholder: $Color__text--muted;
 
-// Brands
-$brand-primary: #3097D1;
-$brand-info: #8eb4cb;
-$brand-success: #2ab27b;
-$brand-warning: #cbb956;
-$brand-danger: #bf5329;
+/**
+ * Dimensions and sizing
+ */
 
-// Typography
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 14px;
-$line-height-base: 1.6;
-$text-color: #636b6f;
 
-// Navbar
-$navbar-default-bg: #fff;
 
-// Buttons
-$btn-default-color: $text-color;
+/**
+ * Typography
+ */
+$Font__base--family: 'Montserrat', sans-serif;;
+$Font__base--size: 16px;
+$Font__base--weight: 300;
+$Font__base--line-height: 1.56;
 
-// Inputs
-$input-border: lighten($text-color, 40%);
-$input-border-focus: lighten($brand-primary, 25%);
-$input-color-placeholder: lighten($text-color, 30%);
+/*
+ * Responsive
+ */
+$Reponsive__desktop--min: 1400px;
+$Reponsive__tablet-landscape--min: 1024px;
+$Reponsive__tablet-portrait--min: 768px;
+$Reponsive__tablet-portrait--max: ($Reponsive__tablet-landscape--min - 1); // 1023px
+$Reponsive__phone-landscape--min: 480px;
+$Reponsive__phone-landscape--max: ($Reponsive__tablet-portrait--min - 1); // 767px
+$Reponsive__phone-portrait--max: ($Reponsive__phone-landscape--min - 1); // 479px
 
-// Panels
-$panel-default-heading-bg: #fff;
+/*
+ * Strings and settings
+ */
+$Path__cdn: "https://fp-customer-codegent.s3.amazonaws.com/www/";

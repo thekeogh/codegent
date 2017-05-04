@@ -1,0 +1,32 @@
+// Clearfix
+.Utility__clearfix:after {
+  content: "";
+  display: table;
+  clear: both
+}
+
+// Text variations
+.Utility__text--truncate {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important
+}
+.Utility__text--untruncate {
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: normal !important
+}
+
+// Spacings
+.Utility__margin--0 { margin-bottom: 0px !important }
+.Utility__margin--12 { margin-bottom: 12px }
+.Utility__margin--24 { margin-bottom: 24px }
+.Utility__margin--34 { margin-bottom: 34px }
+
+// Image replacement
+.Utility__image--replacement {
+  text-indent: 100%;
+  font: 0/0 a;
+  white-space: nowrap;
+  overflow: hidden
+}

@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Codegent'),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://www.codegent.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -227,5 +227,17 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+    
+    /*
+    |--------------------------------------------------------------------------
+    | CDN
+    |--------------------------------------------------------------------------
+    |
+    | The path to the CDN. Use the cdn('path/to/file') helper to prefix the path
+    | with this CDN url
+    |
+    */
+   
+    'cdn_url' => env('CDN_URL', 'https://fp-customer-codegent.s3.amazonaws.com/www/')
 
 ];
