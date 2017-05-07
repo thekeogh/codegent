@@ -4,6 +4,9 @@
 // Blacks
 $Color__black--darkest: #282828;
 
+// Oranges
+$Color__orange__brand: #ed4b14;
+
 // Greys
 $Color__grey_medium: #d3d3d3;
 
@@ -18,8 +21,8 @@ $Color__placeholder: $Color__text--muted;
 /**
  * Dimensions and sizing
  */
-
-
+$Header__height--desktop: 60px;
+$Header__height--mobile: 50px;
 
 /**
  * Typography
@@ -32,7 +35,7 @@ $Font__base--line-height: 1.56;
 /*
  * Responsive
  */
-$Reponsive__desktop--min: 1400px;
+$Reponsive__desktop--min: 1170px; // wrapper
 $Reponsive__tablet-landscape--min: 1024px;
 $Reponsive__tablet-portrait--min: 768px;
 $Reponsive__tablet-portrait--max: ($Reponsive__tablet-landscape--min - 1); // 1023px

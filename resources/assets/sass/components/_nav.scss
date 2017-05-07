@@ -1,3 +1,50 @@
 .Primary {
+  height: $Header__height--desktop;
+  font-size: 19px;
+  float: right;
+  align-items: center;
+  display: flex;
   
+  // Elements
+  &__items {
+    display: flex;
+  }
+  &__item {
+    padding-right: 35px;
+    &:last-child {
+      padding-right: 0
+    }
+  }
+  &__link, &__reveal {
+    color: #fff !important;
+    text-decoration: none !important;
+  }
+  &__link {
+    @include light;
+    transition: color .1s;
+    &:hover {
+      color: $Color__orange__brand !important;
+    }
+  }
+  &__reveal {
+    display: none;
+    .material-icons {
+      font-size: 36px;
+      display: block
+    }
+  }
+  
+}
+
+//
+// Responsive
+// 
+@include respond(all-phones) {
+  .Primary {
+    height: $Header__height--mobile;
+    &__items {
+      display: none
+    }
+    &__reveal { display: block !important }
+  }
 }

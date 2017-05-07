@@ -36,5 +36,7 @@ q { quotes: "“" "”" "‘" "’" }
 
 // Wrapper
 .Wrapper {
-  
+  width: 100%;
+  max-width: $Reponsive__desktop--min;
+  margin: 0 auto;
 }

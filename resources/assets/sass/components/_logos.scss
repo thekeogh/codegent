@@ -1,3 +1,12 @@
 .Logo {
+    @extend .Utility__image--replacement;
+    background: cdn('img/logo.svg') 50% 50%/100% auto no-repeat;
+    display: block;
+    
+    // Sizes
+    &--small {
+      width: 34px;
+      height: 37px
+    }
     
 }

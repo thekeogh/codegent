@@ -1,3 +1,19 @@
+.Header, .Header .Logo--small { height: $Header__height--desktop }
 .Header {
+  padding: 0 12px;
+  background: $Color__black--darkest;
+  color: #fff;
   
+  .Logo--small { float: left }
+  
+}
+
+//
+// Responsive
+// 
+@include respond(all-phones) {
+  .Header, .Header .Logo--small { height: $Header__height--mobile }
+  .Header {
+    .Logo--small { width: 26px }
+  }
 }

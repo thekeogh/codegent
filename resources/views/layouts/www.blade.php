@@ -16,12 +16,54 @@
 
     <link rel="canonical" href="https://www.codegent.com{{ request()->server('REQUEST_URI') }}">
     
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,200i,300,300i,500,500i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,300,300i,500,500i|Material+Icons" rel="stylesheet">
     <link rel="icon" href="{{ cdn('favicon.png') }}">
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    
+    <script type="application/ld+json">
+        {
+            "@context" : "http://schema.org",
+            "@type" : "Organization",
+            "name" : "Codegent",
+            "url" : "http://www.codegent.com",
+            "sameAs" : [
+                "https://twitter.com/codegent",
+                "https://www.facebook.com/codegent",
+                "https://www.youtube.com/user/codegent",
+                "https://www.linkedin.com/company/228582",
+                "https://www.instagram.com/codegent/",
+                "https://plus.google.com/+codegent/"
+            ]
+        }
+    </script>
+    <script>
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-240265-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
 </head>
 <body>
-
+    
+    <header class="Header"><div class="Wrapper">
+        <a href="{{ route('home') }}"><i class="Logo Logo--small"></i></a>
+        <nav class="Primary">
+            <a href="" class="Primary__reveal"><i class="material-icons">menu</i></a>
+            <ul class="Primary__items">
+                <li class="Primary__item"><a href="#" class="Primary__link">About</a></li>
+                <li class="Primary__item"><a href="#" class="Primary__link">Products</a></li>
+                <li class="Primary__item"><a href="#" class="Primary__link">Agency</a></li>
+                <li class="Primary__item"><a href="#" class="Primary__link">Thinking</a></li>
+                <li class="Primary__item"><a href="#" class="Primary__link">Contact</a></li>
+            </ul>
+        </nav>
+    </div></header>
+    
     {{-- Main --}}
     @yield('main')
     
