@@ -57,7 +57,7 @@
             <a href="#" class="Primary__reveal"><i class="material-icons">menu</i></a>
             <ul class="Primary__items">
                 <li class="Primary__item"><a href="{{ route('about') }}" class="Primary__link Primary__link--about">About</a></li>
-                <li class="Primary__item"><a href="#" class="Primary__link Primary__link--products">Products</a></li>
+                <li class="Primary__item"><a href="{{ route('products') }}" class="Primary__link Primary__link--products">Products</a></li>
                 <li class="Primary__item"><a href="#" class="Primary__link Primary__link--agency">Agency</a></li>
                 <li class="Primary__item Primary__link--thinking">
                     <i class="material-icons Primary__more">add</i>

@@ -20,8 +20,12 @@
 @import "components/spotlight";
 @import "components/logos";
 @import "components/format";
+@import "components/carousels";
 
 @import "pages/home";
 @import "pages/about";
+@import "pages/products";
 
 @import "utilities";
+
+@import "vendor/slick";

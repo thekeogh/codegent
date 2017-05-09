@@ -1,4 +1,7 @@
 @extends('layouts.www')
+@section('title', 'Codegent\'s misson &amp; founding team')
+@section('description', 'Who we are, what we do &amp; why we do it')
+@section('image', cdn('img/og/home.jpg'))
 @section('body_class', 'About')
 
 @section('main')

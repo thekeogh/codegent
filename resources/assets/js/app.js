@@ -1,10 +1,28 @@
 import $ from 'jquery';
 import smoothScroll from 'jquery-smooth-scroll';
+import slick from 'slick-carousel';
 
 /**
  * Activate, basic, simple, old skool jQuery
  */
 $(() => {
+    
+    
+    $('.CarouselProducts').slick({
+        dots: false,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear',
+        arrows: true,
+        //autoplay: true,
+        pauseOnHover: false,
+        pauseOnFocus: false,
+        prevArrow: '<i class="material-icons slick-prev">keyboard_arrow_left</i>',
+        nextArrow: '<i class="material-icons slick-next">keyboard_arrow_right</i>'
+        //autoplaySpeed: 3000
+    });
+    
     
     /**
      * Toggle primary nav reveal for mobile

@@ -17,6 +17,7 @@
     "jquery-smooth-scroll": "^2.2.0",
     "laravel-mix": "0.*",
     "lodash": "^4.17.4",
+    "slick-carousel": "^1.6.0",
     "vue": "^2.1.10"
   }
 }

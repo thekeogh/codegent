@@ -1,0 +1,71 @@
+.CarouselProducts, .CarouselProducts__slide, .CarouselProducts .slick-list, .CarouselProducts .slick-track { height: 100% }
+
+.CarouselProducts {
+  &__slide, &__logo {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+  &__slide {
+    background-size: cover;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex !important;
+  }
+  &__logo {
+    @extend .Utility__image--replacement;
+    max-width: 70%;
+    margin: 0 0 30px;
+    background-size: 100% auto;
+    display: block
+  }
+  .slick-arrow {
+    transition: opacity .3s;
+    color: #fff;
+    font-size: 50px;
+    transform: translateY(-50%);
+    top: 50%;
+    position: absolute;
+    z-index: 100;
+    opacity: .4;
+    cursor: pointer;
+    &:hover {
+      opacity: .8
+    }
+  }
+  .slick-prev { left: 0 }
+  .slick-next { right: 0 }
+  
+  // Specifics
+  &__slide--screencloud {
+    background-image: cdn('img/spotlights/screencloud.jpg');
+    .CarouselProducts__logo {
+      width: 250px;
+      height: 160px;
+      background-image: cdn('img/logos/screencloud-light.png');
+    }
+  }
+  &__slide--tepilo {
+    background-image: cdn('img/spotlights/tepilo.jpg');
+    .CarouselProducts__logo {
+      width: 243px;
+      height: 135px;
+      background-image: cdn('img/logos/tepilo-big.png');
+    }
+  }
+  &__slide--twilert {
+    background-image: cdn('img/spotlights/twilert.jpg');
+    .CarouselProducts__logo {
+      width: 327px;
+      height: 107px;
+      background-image: cdn('img/logos/twilert-logo.png');
+    }
+  }
+}
+
+//
+// Responsive
+// 
+@include respond(all-phones) {
+  
+}
