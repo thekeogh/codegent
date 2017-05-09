@@ -10,7 +10,6 @@
         <div class="Spotlight"><div class="Wrapper">
             <h1 class="H1">At Codegent we love the fact that digital technology can change lives. It has the power to make us more productive, better connected, happier, richer and wiser. And we've pulled together a fantastic team of people who share this excitement.</h1>
         </div></div>
-                
         <a href="#founders" class="Spotlight__more Anchor">
             <span class="Spotlight__caption">Our founders</span>
             <i class="material-icons">expand_more</i>

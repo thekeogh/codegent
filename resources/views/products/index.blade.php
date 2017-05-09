@@ -5,25 +5,38 @@
 @section('body_class', 'Products')
 
 @section('main')
-
-    <div class="Spotlight Spotlight--block">
-        
-        <div class="CarouselProducts">
-            <div class="CarouselProducts__slide CarouselProducts__slide--screencloud">
-                <h1 class="CarouselProducts__logo" title="ScreenCloud">ScreenCloud</h1>
-                <a href="https://screen.cloud" class="Button Button--box" target="_blank">visit website</a>
-            </div>
-            <div class="CarouselProducts__slide CarouselProducts__slide--tepilo">
-                <h1 class="CarouselProducts__logo" title="Tepilo">Tepilo</h1>
-                <a href="https://tepilo.com" class="Button Button--box" target="_blank">visit website</a>
-            </div>
-            <div class="CarouselProducts__slide CarouselProducts__slide--twilert">
-                <h1 class="CarouselProducts__logo" title="Twilert">Twilert</h1>
-                <a href="https://twilert.com" class="Button Button--box" target="_blank">visit website</a>
+    
+    <div class="Main Main--paddless">
+        <div class="Spotlight Spotlight--block">
+            <div class="CarouselProducts">
+                <div class="CarouselProducts__slide CarouselProducts__slide--screencloud">
+                    <h1 class="CarouselProducts__logo" title="ScreenCloud">ScreenCloud</h1>
+                    <a href="https://screen.cloud" class="Button Button--box" target="_blank">visit website</a>
+                </div>
+                <div class="CarouselProducts__slide CarouselProducts__slide--tepilo">
+                    <h1 class="CarouselProducts__logo" title="Tepilo">Tepilo</h1>
+                    <a href="https://tepilo.com" class="Button Button--box" target="_blank">visit website</a>
+                </div>
+                <div class="CarouselProducts__slide CarouselProducts__slide--twilert">
+                    <h1 class="CarouselProducts__logo" title="Twilert">Twilert</h1>
+                    <a href="https://twilert.com" class="Button Button--box" target="_blank">visit website</a>
+                </div>
             </div>
         </div>
-        
+        <a href="#roles" class="Spotlight__more Anchor">
+            <span class="Spotlight__caption">Product role</span>
+            <i class="material-icons">expand_more</i>
+        </a>
     </div>
-    ;lkjlkj
-    
+    <div class="Sub Roles" id="roles"><div class="Wrapper">
+        <h2 class="Roles__strap">We've developed multiple B2B &amp; B2C digital product brands in SaaS &amp; Mobile</h2>
+        dads<br>sadsad<br>sadsad<br><br>sadsad
+        dads<br>sadsad<br>sadsad<br><br>sadsad
+        dads<br>sadsad<br>sadsad<br><br>sadsad
+        dads<br>sadsad<br>sadsad<br><br>sadsad
+        dads<br>sadsad<br>sadsad<br><br>sadsad
+        dads<br>sadsad<br>sadsad<br><br>sadsad
+        dads<br>sadsad<br>sadsad<br><br>sadsad
+    </div></div>
+        
 @endsection

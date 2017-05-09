@@ -1,3 +1,18 @@
 .Main {
-  position: relative
+  position: relative;
+  &--paddless { padding: 0 }
+}
+.Sub {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+//
+// Responsive
+// 
+@include respond(all-phones) {
+  .Sub {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
 }
