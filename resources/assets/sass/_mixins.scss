@@ -1,7 +1,8 @@
 /**
  * Font weights
  */
-@mixin light { font-weight: 100 }
+@mixin thin { font-weight: 100 }
+@mixin light { font-weight: 200 }
 @mixin regular { font-weight: 300 }
 @mixin bold { font-weight: 500 }
 

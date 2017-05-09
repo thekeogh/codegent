@@ -1,0 +1,49 @@
+.Spotlight {
+  height: calc(100vh - #{$Header__height--desktop});
+  align-items: center;
+  display: flex;
+  
+  // Elements
+  &__more {
+    transition: all .3s;
+    color: #fff !important;
+    text-decoration: none !important;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 18px;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    opacity: .6;
+    .material-icons {
+      font-size: 60px;
+      line-height: 40px;
+    }
+    &:hover {
+      opacity: 1;
+      bottom: 12px
+    }
+  }
+  &__caption {
+    @include thin;
+    font-size: 16px;
+    opacity: .7
+  }
+  
+}
+
+//
+// Responsive
+// 
+@include respond(all-phones) {
+  .Spotlight {
+    height: calc(100vh - #{$Header__height--mobile});
+    &__more {
+      .material-icons {
+        font-size: 40px;
+        line-height: 25px
+      }
+    }
+  }
+}

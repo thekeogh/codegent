@@ -16,7 +16,8 @@
 
     <link rel="canonical" href="https://www.codegent.com{{ request()->server('REQUEST_URI') }}">
     
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,300,300i,500,500i|Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://d1azc1qln24ryf.cloudfront.net/114779/Socicon/style-cf.css?libdco">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,200i,300,300i,500,500i|Material+Icons" rel="stylesheet">
     <link rel="icon" href="{{ cdn('favicon.png') }}">
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     
@@ -48,18 +49,25 @@
         })();
     </script>
 </head>
-<body>
+<body class="@yield('body_class')">
     
     <header class="Header"><div class="Wrapper">
         <a href="{{ route('home') }}"><i class="Logo Logo--small"></i></a>
         <nav class="Primary">
-            <a href="" class="Primary__reveal"><i class="material-icons">menu</i></a>
+            <a href="#" class="Primary__reveal"><i class="material-icons">menu</i></a>
             <ul class="Primary__items">
-                <li class="Primary__item"><a href="#" class="Primary__link">About</a></li>
-                <li class="Primary__item"><a href="#" class="Primary__link">Products</a></li>
-                <li class="Primary__item"><a href="#" class="Primary__link">Agency</a></li>
-                <li class="Primary__item"><a href="#" class="Primary__link">Thinking</a></li>
-                <li class="Primary__item"><a href="#" class="Primary__link">Contact</a></li>
+                <li class="Primary__item"><a href="{{ route('about') }}" class="Primary__link Primary__link--about">About</a></li>
+                <li class="Primary__item"><a href="#" class="Primary__link Primary__link--products">Products</a></li>
+                <li class="Primary__item"><a href="#" class="Primary__link Primary__link--agency">Agency</a></li>
+                <li class="Primary__item Primary__link--thinking">
+                    <i class="material-icons Primary__more">add</i>
+                    <a href="#" class="Primary__link">Thinking</a>
+                    <ul class="Secondary Secondary--hidden">
+                        <li class="Secondary__item"><a href="" class="Secondary__link">Blog</a></li>
+                        <li class="Secondary__item"><a href="" class="Secondary__link">Feed</a></li>
+                    </ul>
+                </li>
+                <li class="Primary__item"><a href="#" class="Primary__link Primary__link--contact">Contact</a></li>
             </ul>
         </nav>
     </div></header>

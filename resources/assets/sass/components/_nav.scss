@@ -1,6 +1,6 @@
 .Primary {
   height: $Header__height--desktop;
-  font-size: 19px;
+  font-size: 18px;
   float: right;
   align-items: center;
   display: flex;
@@ -10,17 +10,26 @@
     display: flex;
   }
   &__item {
-    padding-right: 35px;
+    padding-right: 38px;
+    position: relative;
     &:last-child {
       padding-right: 0
     }
   }
-  &__link, &__reveal {
+  &__link, &__reveal, &__more, .Secondary__link {
     color: #fff !important;
     text-decoration: none !important;
   }
+  &__more {
+    transition: all .2s linear;
+    line-height: $Header__height--mobile;
+    right: 6px;
+    position: absolute;
+    opacity: .3;
+    display: none
+  }
   &__link {
-    @include light;
+    @include thin;
     transition: color .1s;
     &:hover {
       color: $Color__orange__brand !important;
@@ -34,7 +43,13 @@
     }
   }
   
+  // Children
+  .Secondary { display: none } // KEOGH: THIS IS INSIDE .PRIMARY, WE HIDE HERE AS ITS IN THERE FOR MOBILE
+  
 }
+
+// States
+.About .Primary__link--about { color: $Color__orange__brand !important }
 
 //
 // Responsive
@@ -43,8 +58,43 @@
   .Primary {
     height: $Header__height--mobile;
     &__items {
-      display: none
+      width: $Primary__width--mobile;
+      height: 100vh;
+      background: $Color__black--darkest;
+      transform: translate3d($Primary__width--mobile, 0, 0);
+      flex-direction: column;
+      top: 0;
+      right: 0;
+      position: fixed;
     }
+    &__item {
+      min-height: $Header__height--mobile;
+      padding: 0 !important;
+      border-bottom: solid 1px $Color__black--darker;
+      line-height: $Header__height--mobile;
+      &--secondary {
+        border-bottom: 0;
+        .Primary__more {
+          transform: rotate(90deg);
+          opacity: 1
+        }
+      }
+    }
+    &__link { @include light }
+    &__more { display: block }
+    &__link, .Secondary__link { padding: 0 12px }
     &__reveal { display: block !important }
+  }
+  .Secondary {
+    @include thin;
+    background: $Color__black--darker;
+    font-size: 16px;
+    &__item { border-bottom: solid 1px #444 }
+    &--hidden { display: none }
+  }
+  // on state or primary nav
+  body {
+    transition: transform .4s cubic-bezier(.77,.01,.83,.67);
+    &.nav--on { transform: translate3d(-#{$Primary__width--mobile}, 0, 0) }
   }
 }

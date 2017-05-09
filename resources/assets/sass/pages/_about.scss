@@ -1,0 +1,89 @@
+.About {
+  
+  .Main {
+    background: cdn('img/spotlights/about.jpg') right 50%/cover no-repeat;
+    .H1 {
+      @include thin;
+      max-width: 620px;
+      margin: -#{$Header__height--desktop} auto 0;
+      font-size: 30px;
+      line-height: 44px;
+      color: #fff;
+      text-align: center;
+    }
+  }
+  .Sub {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background: #fff
+  }
+  
+  .Founders {
+    justify-content: space-between;
+    display: flex;
+    &__founder {
+      text-align: center;
+      flex-basis: 30%
+    }
+    &__image {
+      width: 70%;
+      margin: 0 0 18px;
+      border-radius: 50%;
+      display: inline-block
+    }
+    &__name {
+      @include light;
+      margin: 0 0 12px;
+      font-size: 22px
+    }
+    &__socials {
+      margin: 0;
+      justify-content: center;
+      align-items: flex-start;
+      display: flex
+    }
+    &__social {
+      transition: opacity .3s;
+      margin: 0 6px;
+      text-decoration: none !important;
+      color: $Color__grey--darker !important;
+      font-size: 26px;
+      opacity: .5;
+      &:hover {
+        opacity: .8
+      }
+      &:first-child { margin-top: 2px }
+    }
+  }
+  
+}
+
+//
+// Responsive
+// 
+@include respond(all-phones) {
+  .About {
+    .Main {
+      .H1 {
+        margin: -#{$Header__height--mobile} auto 0;
+        font-size: 20px;
+        line-height: 32px;
+      }
+    }
+    .Founders {
+      &__name { font-size: 18px }
+    }
+  }
+}
+@include respond(phone-portrait) {
+  .About {
+    .Founders {
+      justify-content: flex-start;
+      flex-direction: column;
+      &__founder {
+        margin: 0 0 24px;
+        &:last-child { margin: 0 }
+      }
+    }
+  }
+}

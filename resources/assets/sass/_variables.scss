@@ -2,18 +2,20 @@
  * Colours
  */
 // Blacks
-$Color__black--darkest: #282828;
+$Color__black--darkest: #181818;
+$Color__black--darker: #333;
 
 // Oranges
 $Color__orange__brand: #ed4b14;
 
 // Greys
-$Color__grey_medium: #d3d3d3;
+$Color__grey--darker: #6b6b6b;
+$Color__grey--medium: #d3d3d3;
 
 // Config
 $Color__body--background: #fff;
 $Color__body--text: $Color__black--darkest;
-$Color__text--muted: $Color__grey_medium;
+$Color__text--muted: $Color__grey--medium;
 $Color__selection--background: $Color__black--darkest;
 $Color__selection--text: #fff;
 $Color__placeholder: $Color__text--muted;
@@ -23,6 +25,7 @@ $Color__placeholder: $Color__text--muted;
  */
 $Header__height--desktop: 60px;
 $Header__height--mobile: 50px;
+$Primary__width--mobile: 200px;
 
 /**
  * Typography
