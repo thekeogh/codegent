@@ -26,17 +26,23 @@ $Button__default--height: 45px;
   }
   
   // Colours
-  &--box {
+  &--box, &--box-invert {
     background: transparent;
-    color: #fff !important;
-    border: solid 1px #fff;
     border-radius: 4px;
     line-height: #{$Button__default--height - 2};
-    opacity: .4;
+    opacity: .5;
     &:hover {
       background: transparent;
       opacity: .8
     }
+  }
+  &--box {
+    color: #fff !important;
+    border: solid 1px #fff;
+  }
+  &--box-invert {
+    color: #000 !important;
+    border: solid 1px $Color__black--darkest;
   }
   
 }

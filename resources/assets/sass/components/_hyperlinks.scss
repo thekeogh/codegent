@@ -1,0 +1,9 @@
+a, a:visited {
+  transition: color .2s;
+  color: $Color__black--darkest;
+  text-decoration: underline;
+  &:hover {
+    color: $Color__orange__brand;
+    text-decoration: none
+  }
+}

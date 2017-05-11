@@ -1,0 +1,105 @@
+$Office__height: 370px;
+$Logo__width: 160px;
+
+.Agency {
+  
+  .Office {
+    height: $Office__height;
+    background: cdn('img/spotlights/office.jpg') 50% 50%/cover no-repeat;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    &:after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: rgba($Color__blue--thinmartian, .7);
+      left: 0;
+      top: 0;
+      position: absolute;
+      z-index: 1;
+    }
+    .Main {
+      color: #fff;
+      text-align: center;
+      top: -32px;
+      position: relative;
+      z-index: 2;
+    }
+    .Spotlight__more {
+      z-index: 2;
+      display: none
+    }
+    &__content {
+      @include light;
+      max-width: 600px;
+      margin: 0 auto 24px;
+      font-size: 26px;
+      line-height: 40px;
+      &:last-child { margin-bottom: 0 }
+    }
+  }
+  
+  .Thinmartian {
+    min-height: calc(100vh - #{$Header__height--desktop} - #{$Office__height});
+    padding-top: 0;
+    background: $Color__blue--thinmartian;
+    text-align: center;
+    &__logo {
+      width: $Logo__width;
+      height: $Logo__width;
+      margin: 0 auto;
+      background: $Color__blue--thinmartian;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      top: -#{$Logo__width/2};
+      position: relative;
+      z-index: 2;
+      img {
+        width: 55%;
+        margin: 0 auto;
+        display: block
+      }
+    }
+    &__content {
+      @include thin;
+      max-width: 800px;
+      margin: 0 auto 24px;
+      font-size: 22px;
+      color: #fff;
+      top: -30px;
+      position: relative
+    }
+  }
+  
+}
+
+//
+// Responsive
+// 
+@include respond(all-phones) {
+  .Agency {
+    .Office {
+      height: auto;
+      min-height: calc(100vh - #{$Header__height--mobile});
+      .Spotlight__more { display: flex }
+      &__content {
+        font-size: 24px;
+        line-height: 37px;
+      }
+    }
+    .Thinmartian {
+      min-height: 0;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      &__logo { margin-bottom: 18px; top: 0 }
+      &__content {
+        top: 0;
+        font-size: 18px
+      }
+    }
+  }
+}
