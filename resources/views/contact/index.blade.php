@@ -7,7 +7,8 @@
 @section('main')
 
     <div class="Main"><div class="Spotlight Spotlight--block"><div class="Wrapper Touch">
-        <form method="post" action="#" class="Touch__left">
+        <form method="post" action="{{ route('contacting') }}" class="Touch__left">
+            {{ csrf_field() }}
             <h1 class="Touch__title">Drop us a line</h1>
             
             <div class="Form__row">
