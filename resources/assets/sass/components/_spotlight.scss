@@ -1,5 +1,5 @@
 .Spotlight {
-  height: calc(100vh - #{$Header__height--desktop});
+  min-height: calc(100vh - #{$Header__height--desktop});
   align-items: center;
   display: flex;
   
@@ -32,9 +32,8 @@
   }
   
   // Modifiers
-  &--block {
-    display: block
-  }
+  &--block { display: block }
+  &--force { height: calc(100vh - #{$Header__height--desktop}); min-height: 0 }
   
 }
 
@@ -43,12 +42,13 @@
 // 
 @include respond(all-phones) {
   .Spotlight {
-    height: calc(100vh - #{$Header__height--mobile});
+    min-height: calc(100vh - #{$Header__height--mobile});
     &__more {
       .material-icons {
         font-size: 40px;
         line-height: 25px
       }
     }
+    &--force { height: calc(100vh - #{$Header__height--mobile}); min-height: 0 }
   }
 }

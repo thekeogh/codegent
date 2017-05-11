@@ -35,7 +35,7 @@ input:-webkit-autofill { background-color: transparent !important }
 q { quotes: "“" "”" "‘" "’" }
 
 // Wrapper
-.Header, .Main, .Sub, .Footer { padding-left: 12px; padding-right: 12px }
+.Header, .Main, .Sub, .Footer { padding-left: 18px; padding-right: 18px }
 .Wrapper {
   width: 100%;
   max-width: $Reponsive__desktop--min;

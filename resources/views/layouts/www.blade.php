@@ -67,7 +67,7 @@
                         <li class="Secondary__item"><a href="" class="Secondary__link">Feed</a></li>
                     </ul>
                 </li>
-                <li class="Primary__item"><a href="#" class="Primary__link Primary__link--contact">Contact</a></li>
+                <li class="Primary__item"><a href="{{ route('contact') }}" class="Primary__link Primary__link--contact">Contact</a></li>
             </ul>
         </nav>
     </div></header>

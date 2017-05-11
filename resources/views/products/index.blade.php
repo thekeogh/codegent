@@ -7,7 +7,7 @@
 @section('main')
     
     <div class="Main Main--paddless">
-        <div class="Spotlight Spotlight--block">
+        <div class="Spotlight Spotlight--force Spotlight--block">
             <div class="CarouselProducts">
                 <div class="CarouselProducts__slide CarouselProducts__slide--screencloud">
                     <h1 class="CarouselProducts__logo" title="ScreenCloud">ScreenCloud</h1>

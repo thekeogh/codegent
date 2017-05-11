@@ -7,3 +7,50 @@
 // Fixes
 input:focus, select:focus, textarea:focus, button:focus { outline: none }
 ::-ms-clear { display: none }
+
+// Elements
+.Form {
+  &__element {
+    @include light;
+    padding: 12px;
+    font-size: 20px;
+    border: solid 2px #fff;
+    background: #fff;
+    appearance: none;
+    border-radius: 0;
+    &:focus { border-color: $Color__orange__brand }
+  }
+}
+
+// Styling
+.Form {
+  &__row {
+    margin: 0 0 24px;
+    align-items: center;
+    display: flex;
+    &--top { align-items: flex-start }
+    &--buttons { padding-left: 25% }
+  }
+  &__label {
+    flex-basis: 25%;
+    flex-shrink: 0;
+    font-size: 20px
+  }
+  &__element {
+    flex-grow: 1
+  }
+}
+
+// 
+// Responsive
+// 
+@include respond(all-phones) {
+  .Form {
+    &__label { display: none }
+    &__row--buttons {
+      padding: 0;
+      text-align: center;
+      button { margin: 0 auto; display: block }
+    }
+  }
+}
