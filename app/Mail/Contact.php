@@ -17,19 +17,19 @@ class Contact extends Mailable
     public $name;
     public $email;
     public $type;
-    public $message;
+    public $enquiry;
     
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($name, $email, $type, $message)
+    public function __construct($name, $email, $type, $enquiry)
     {
         $this->name = $name;
         $this->email = $email;
         $this->type = $type;
-        $this->message = $message;
+        $this->enquiry = $enquiry;
     }
 
     /**
@@ -40,8 +40,28 @@ class Contact extends Mailable
     public function build()
     {
         return $this
-            ->to('steve@screen.cloud')
-            ->subject('Hello from Codegent')
+            ->to($this->address())
+            ->subject("{$this->type} enquiry from codegent.com")
             ->view('emails.contact');
+    }
+    
+    /**
+     * Fetch the email to address based on the type
+     * 
+     * @return string
+     */
+    protected function address()
+    {
+        switch ($this->type) {
+            case 'Products':
+                return env('MAIL_FROM_PRODUCTS');
+            break;
+            case 'Agency':
+                return env('MAIL_FROM_AGENCY');
+            break;
+            default:
+                return env('MAIL_FROM_HELLO');
+            break;
+        }
     }
 }

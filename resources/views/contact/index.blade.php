@@ -11,26 +11,40 @@
             {{ csrf_field() }}
             <h1 class="Touch__title">Drop us a line</h1>
             
+            @if (request()->has('sent'))
+                <div class="Form__success">
+                    Thanks, your enquiry has been successfully sent. We will be in contact shortly.
+                </div>
+            @endif
+            
+            @if ($errors->count())
+                <div class="Form__errors">
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}<br>
+                    @endforeach
+                </div>
+            @endif
+            
             <div class="Form__row">
                 <label for="name" class="Form__label">Name:</label>
-                <input type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Your full name" class="Form__element">
+                <input type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Your full name" class="Form__element {{ $errors->has('name') ? 'Form__element--errored' : null }}">
             </div>
             <div class="Form__row">
                 <label for="email" class="Form__label">Email:</label>
-                <input type="email" name="email" id="email" value="{{ old('email') }}" placeholder="Your email address" class="Form__element">
+                <input type="email" name="email" id="email" value="{{ old('email') }}" placeholder="Your email address" class="Form__element {{ $errors->has('email') ? 'Form__element--errored' : null }}">
             </div>
             <div class="Form__row">
                 <label for="type" class="Form__label">Type:</label>
-                <select name="type" id="type" class="Form__element">
+                <select name="type" id="type" class="Form__element {{ $errors->has('type') ? 'Form__element--errored' : null }}">
                     <option value="">Enquiry type...</option>
-                    <option value="">Saying hello</option>
-                    <option value="">Working on products</option>
-                    <option value="">Working in agency</option>
+                    <option value="Hello">Saying hello</option>
+                    <option value="Products">Working on products</option>
+                    <option value="Agency">Working in agency</option>
                 </select>
             </div>
             <div class="Form__row Form__row--top">
                 <label for="message" class="Form__label">Message:</label>
-                <textarea name="message" id="message" value="{{ old('message') }}" rows="8" placeholder="How can we help?" class="Form__element"></textarea>
+                <textarea name="message" id="message" value="{{ old('message') }}" rows="8" placeholder="How can we help?" class="Form__element {{ $errors->has('message') ? 'Form__element--errored' : null }}"></textarea>
             </div>
             <div class="Form__row Form__row--buttons">
                 <button type="submit" class="Button Button--box">Send</button>

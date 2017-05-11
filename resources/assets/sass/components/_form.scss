@@ -37,7 +37,26 @@ input:focus, select:focus, textarea:focus, button:focus { outline: none }
     font-size: 20px
   }
   &__element {
-    flex-grow: 1
+    flex-grow: 1;
+    &--errored {
+      border-color: #cc0000
+    }
+  }
+  &__errors, &__success {
+    @include bold;
+    margin: 0 0 24px;
+    padding: 12px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px
+  }
+  &__errors {
+    border: solid 2px #cc0000;
+    background: rgba(#cc0000, .7);
+  }
+  &__success {
+    border: solid 2px #049801;
+    background: rgba(#049801, .7);
   }
 }
 
