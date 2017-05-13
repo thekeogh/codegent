@@ -17,3 +17,8 @@ Route::get('products', ['uses' => 'ProductsController@index', 'as' => 'products'
 Route::get('agency', ['uses' => 'AgencyController@index', 'as' => 'agency']);
 Route::get('contact', ['uses' => 'ContactController@index', 'as' => 'contact']);
 Route::post('contact', ['uses' => 'ContactController@contacting', 'as' => 'contacting']);
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::get('/', ['uses' => 'DashboardController@index', 'as' => 'admin.dashboard']);
+    Auth::routes();
+});
