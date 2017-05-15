@@ -1,0 +1,118 @@
+.Admin {
+  
+  background: $Color__black--darkest;
+  color: #fff;
+  
+  /**
+   * Splash style pages (login, password etc). These pages contain no
+   * header or footer and just centralised content
+   */
+  .Splash {
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    &__box {
+      width: 100%;
+      max-width: 400px;
+      padding: 18px;
+      border: solid 1px #fff;
+      flex-direction: column;
+      align-items: center;
+      display: flex
+    }
+    &__logo {
+      margin: 0 0 24px;
+    }
+    &__error {
+      @include thin;
+      font-size: 12px;
+      color: $Color__red--error;
+      top: -14px;
+      position: relative
+    }
+    &__field {
+      @include light;
+      width: 100%;
+      margin: 0 0 18px;
+      padding: 12px;
+      background: #fff;
+      border: 0;
+    }
+    &__check {
+      @include light;
+      margin: 0 0 18px;
+      padding: 0 0 0 34px;
+      font-size: 14px;
+      position: relative;
+      input {
+        left: 2px;
+        top: 0;
+        position: absolute
+      }
+    }
+  }
+  
+  /**
+   * Links
+   */
+  .LinkWhite, .LinkWhite:visited {
+    transition: color .2s;
+    color: #fff;
+    text-decoration: none !important;
+    &:hover {
+      color: $Color__orange__brand
+    }
+  }
+  
+  /**
+   * Admin header
+   */
+  .AdminHeader {
+    width: 100%;
+    margin: 0 0 24px;
+    padding: 18px;
+    border-bottom: solid 1px $Color__black--darker;
+    justify-content: space-between;
+    align-items: center;
+    display: flex
+  }
+  
+  /**
+   * Nav
+   */
+  .AdminNav {
+    @include light;
+    font-size: 14px;
+    align-items: center;
+    display: flex;
+    &__item {
+      margin-left: 12px;
+      padding-left: 12px;
+      &--sep { border-left: solid 1px $Color__black--darker}
+      &:first-child { margin-left: 0; padding-left: 0 }
+      .material-icons { display: block }
+    }
+  }
+  // nav state
+  &.Redirects .AdminNav__item--redirects { color: $Color__orange__brand !important }
+  &.BlogCategories .AdminNav__item--blogcats { color: $Color__orange__brand !important }
+  &.BlogArticles .AdminNav__item--blogarticles { color: $Color__orange__brand !important }
+  &.Media .AdminNav__item--media { color: $Color__orange__brand !important }
+  
+  /**
+   * Main
+   */
+  .AdminMain {
+    padding: 0 18px;
+  }
+  
+  /**
+   * Footer
+   */
+  .AdminFooter {
+    padding: 24px 18px 18px
+  }
+  
+}

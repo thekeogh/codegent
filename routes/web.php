@@ -19,6 +19,12 @@ Route::get('contact', ['uses' => 'ContactController@index', 'as' => 'contact']);
 Route::post('contact', ['uses' => 'ContactController@contacting', 'as' => 'contacting']);
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
-    Route::get('/', ['uses' => 'DashboardController@index', 'as' => 'admin.dashboard']);
-    Auth::routes();
+    Route::get('/', function() {
+        return redirect()->route('redirects.index');
+    });
+    Route::resource('redirects', 'RedirectsController', ['except' => ['show']]);
+    // auth routes
+    Route::get('login', ['uses' => 'Auth\LoginController@showLoginForm', 'as' => 'login']);
+    Route::post('login', ['uses' => 'Auth\LoginController@login']);
+    Route::get('logout', ['uses' => 'Auth\LoginController@logout', 'as' => 'logout']);
 });
