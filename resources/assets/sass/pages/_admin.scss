@@ -4,6 +4,27 @@
   color: #fff;
   
   /**
+   * Globals (within .Admin)
+   */
+  input[type='text'], input[type='email'], input[type='password'], textarea, select {
+    transition: border .2s;
+    background: #fff;
+    border: solid 1px #fff;
+    &:focus {
+      border-color: $Color__orange__brand;
+    }
+  }
+  .Code {
+    padding: 3px 6px;
+    background: #eff0f1;
+    color: #7d2827;
+    font-family: $Font__base--mono;
+    text-shadow: 1px 1px #fff;
+    line-height: normal;
+    display: inline-block;
+  }
+  
+  /**
    * Splash style pages (login, password etc). These pages contain no
    * header or footer and just centralised content
    */
@@ -95,7 +116,6 @@
       .material-icons { display: block }
     }
   }
-  // nav state
   &.Redirects .AdminNav__item--redirects { color: $Color__orange__brand !important }
   &.BlogCategories .AdminNav__item--blogcats { color: $Color__orange__brand !important }
   &.BlogArticles .AdminNav__item--blogarticles { color: $Color__orange__brand !important }
@@ -113,6 +133,156 @@
    */
   .AdminFooter {
     padding: 24px 18px 18px
+  }
+  
+  //
+  // LISTING
+  // 
+  
+  /**
+   * Status icons
+   */
+  .Status {
+    &--live, &--active, &--approved { color: $Color__status--live }
+    &--pending { color: $Color__status--pending }
+    &--hidden, &--archived, &--inactive { color: $Color__status--hidden }
+  }
+  
+  /**
+   * Top bar (title and buttons)
+   */
+  .Top {
+    margin: 0 0 24px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    &__title {
+      @include light;
+      font-size: 26px
+    }
+  }
+  
+  /**
+   * Filters
+   */
+  .Filters {
+    padding: 12px;
+    border: solid 1px #fff;
+    border-bottom: 0;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    &__all {
+      @include thin;
+      margin-right: 6px;
+      font-size: 14px;
+      color: #fff !important;
+      text-decoration: none !important;
+      display: inline-block;
+      &:hover { text-decoration: underline !important; }
+    }
+    &__counts {
+      @include light;
+      font-size: 14px;
+      color: #a8a8a8;
+      white-space: nowrap;
+      strong { @include bold; color: #fff }
+    }
+    &__form {
+      input[type='text'] {
+        @include light;
+        width: 280px;
+        font-size: 14px;
+        padding: 8px;
+      }
+    }
+  }
+  
+  /**
+   * Listing table
+   */
+  .Listing {
+    width: 100%;
+    background: #fff;
+    color: $Color__black--darkest;
+    &__heading, &__column {
+      @include regular;
+      width: 1%;
+      padding: 12px;
+      font-size: 14px;
+      border-bottom: solid 1px $Color__grey--lightest;
+      white-space: nowrap;
+      text-align: left;
+      vertical-align: middle;
+      &--center { text-align: center }
+      &--notice { 
+        padding: 44px 12px;
+      }
+    }
+    tr:nth-child(odd) .Listing__column { background: #f5f5f5 }
+    &__heading {
+      @include bold;
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+    &__column {
+      &--main {
+        @include bold;
+        width: auto;
+        white-space: normal
+      }
+      .material-icons {
+        display: block
+      }
+    }
+    &__action {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      line-height: normal;
+      display: block;
+      cursor: pointer;
+      &--danger { color: $Color__red--error }
+    }
+  }
+  
+  /**
+   * Paging
+   */
+  .Paging {
+    margin-top: 24px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    &__prev, &__next {
+      .Paging__link {
+        border: 0;
+        &:hover {
+          background: none;
+          color: #fff
+        }
+      }
+      .material-icons {line-height: normal }
+    }
+    &__page {
+      margin: 0 8px;
+    }
+    &__link {
+      transition: color .2s, background .2s;
+      min-width: 30px;
+      height: 30px;
+      padding: 0 12px;
+      border: solid 1px #fff;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      line-height: 30px;
+      display: block;
+      &:hover {
+        background: #fff;
+        color: $Color__black--darkest;
+      }
+    }
   }
   
 }

@@ -19,10 +19,8 @@ Route::get('contact', ['uses' => 'ContactController@index', 'as' => 'contact']);
 Route::post('contact', ['uses' => 'ContactController@contacting', 'as' => 'contacting']);
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
-    Route::get('/', function() {
-        return redirect()->route('redirects.index');
-    });
-    Route::resource('redirects', 'RedirectsController', ['except' => ['show']]);
+    Route::get('/', function() { return redirect()->route('redirects.index'); });
+    Route::resource('redirects', 'RedirectsController', ['except' => ['show'], 'parameters' => ['redirects' => 'id']]);
     // auth routes
     Route::get('login', ['uses' => 'Auth\LoginController@showLoginForm', 'as' => 'login']);
     Route::post('login', ['uses' => 'Auth\LoginController@login']);

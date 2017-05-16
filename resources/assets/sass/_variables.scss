@@ -4,6 +4,7 @@
 // Blacks
 $Color__black--darkest: #181818;
 $Color__black--darker: #333;
+$Color__black--lightest: #555;
 
 // Oranges
 $Color__orange__brand: #ed4b14;
@@ -17,6 +18,12 @@ $Color__red--error: #f17373;
 // Greys
 $Color__grey--darker: #6b6b6b;
 $Color__grey--medium: #d3d3d3;
+$Color__grey--lightest: #e1e1e1;
+
+// Status
+$Color__status--live: #18c202;
+$Color__status--hidden: #b1b1b1;
+$Color__status--pending: #e2922b;
 
 // Config
 $Color__body--background: #fff;
@@ -36,7 +43,8 @@ $Primary__width--mobile: 200px;
 /**
  * Typography
  */
-$Font__base--family: 'Montserrat', sans-serif;;
+$Font__base--family: 'Montserrat', sans-serif;
+$Font__base--mono: 'Droid Sans Mono';
 $Font__base--size: 16px;
 $Font__base--weight: 300;
 $Font__base--line-height: 1.56;

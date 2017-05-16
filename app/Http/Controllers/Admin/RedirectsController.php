@@ -3,82 +3,84 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class RedirectsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Describe this resource (e.g. Article, Media etc)
+     * 
+     * @var string
      */
-    public function index()
-    {
-        return view('admin.form.list');
-    }
-
+    protected $what = 'Redirect';
+    
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * The DB table to make all transactions with
+     * 
+     * @var string
      */
-    public function create()
-    {
-        //
-    }
-
+    protected $model = \App\Redirect::class;
+    
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Are these resource creatable?
+     * 
+     * @var boolean
      */
-    public function store(Request $request)
-    {
-        //
-    }
-
+    protected $creatable = true;
+    
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Are these resource deletable?
+     * 
+     * @var boolean
      */
-    public function edit($id)
-    {
-        //
-    }
-
+    protected $deletable = true;
+    
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Columns that are searchable by the keyword search
+     * 
+     * @var array
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
+    protected $searchable = [
+        'id',
+        'status',
+        'from',
+        'to'
+    ];
+    
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Fields for the listing grid
+     * 
+     * @var array
      */
-    public function destroy($id)
-    {
-        //
-    }
+    protected $grid = [
+        'status' => [
+            'label' => null,
+            'type' => 'status',
+            'class' => 'Listing__column--center'
+        ],
+        'id' => [
+            'label' => 'ID',
+            'type' => 'numeric',
+            'class' => 'Listing__column--center'
+        ],
+        'from' => [
+            'label' => 'From',
+            'type' => 'string',
+            'main' => true
+        ],
+        'to' => [
+            'label' => 'To',
+            'type' => 'string'
+        ],
+        'created_at' => [
+            'label' => 'Created',
+            'type' => 'date'
+        ],
+        'updated_at' => [
+            'label' => 'Updated',
+            'type' => 'ago'
+        ]
+    ];
+
+    
 }
