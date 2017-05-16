@@ -54,6 +54,13 @@ class Controller extends AppController
     protected $grid;
     
     /**
+     * Form fields for the create/edit form
+     * 
+     * @var array
+     */
+    protected $fields;
+    
+    /**
      * Initialised model
      * 
      * @var Illuminate\Database\Eloquent\Model
@@ -67,6 +74,7 @@ class Controller extends AppController
      */
     public function __construct()
     {
+        $this->admin = app()->make('App\Services\Admin\Admin');
         $this->middleware('auth');
         $this->_model = new $this->model;
     }
@@ -95,7 +103,11 @@ class Controller extends AppController
     public function create()
     {
         return view('admin.form.form', [
-            'what' => $this->what
+            'type' => 'create',
+            'what' => $this->what,
+            'method' => 'POST',
+            'action' => $this->admin->getStorePath(),
+            'fields' => $this->fields
         ]);
     }
 
@@ -105,9 +117,14 @@ class Controller extends AppController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        // Call the request first
+        $request = app()->make($this->request);
+        // Save it
+        $this->_model->create($request->all());
+        // Back to the index with a message
+        return redirect()->to($this->admin->getIndexPath())->withSuccess("{$this->what} created successfully!");
     }
 
     /**
