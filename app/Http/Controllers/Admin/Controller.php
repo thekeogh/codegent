@@ -24,6 +24,13 @@ class Controller extends AppController
     protected $model;
     
     /**
+     * The form request for the resource
+     * 
+     * @var string
+     */
+    protected $request;
+    
+    /**
      * Are these resource creatable?
      * 
      * @var boolean
@@ -107,7 +114,8 @@ class Controller extends AppController
             'what' => $this->what,
             'method' => 'POST',
             'action' => $this->admin->getStorePath(),
-            'fields' => $this->fields
+            'fields' => $this->fields,
+            'record' => null
         ]);
     }
 
@@ -135,7 +143,18 @@ class Controller extends AppController
      */
     public function edit($id)
     {
-        //
+        $record = $this->getRecord($id);
+        // Need the record to go any further
+        if (! $record) return redirect()->to($this->admin->getIndexPath())->withError('Sorry, this '. strtolower($this->what) .' doesn\'t exist!');
+        // We may continue
+        return view('admin.form.form', [
+            'type' => 'edit',
+            'what' => $this->what,
+            'method' => 'PUT',
+            'action' => $this->admin->getUpdatePath(['id' => $id]),
+            'fields' => $this->fields,
+            'record' => $record
+        ]);
     }
 
     /**
@@ -145,9 +164,16 @@ class Controller extends AppController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        // Call the request first
+        $request = app()->make($this->request);
+        // Save it
+        $record = $this->getRecord($id);
+        $record->fill($request->all());
+        $record->save();
+        // Back to the index with a message
+        return redirect()->to($this->admin->getIndexPath())->withSuccess("{$this->what} updated successfully!");
     }
 
     /**
@@ -176,6 +202,17 @@ class Controller extends AppController
             }
         }
         return $listing->paginate(50);
+    }
+    
+    /**
+     * Get the record for editing
+     * 
+     * @param  integer $id The ID we want
+     * @return Illuminate\Database\Eloquent\Model
+     */
+    protected function getRecord($id)
+    {
+        return $this->_model->find($id);
     }
     
 }

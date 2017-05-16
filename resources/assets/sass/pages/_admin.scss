@@ -19,6 +19,7 @@
     background: #eff0f1;
     color: #7d2827;
     font-family: $Font__base--mono;
+    border-radius: 4px;
     text-shadow: 1px 1px #fff;
     line-height: normal;
     display: inline-block;
@@ -340,8 +341,10 @@
       appearance: none;
     }
     &__buttons {
+      width: 100%;
       margin-top: 12px;
-      margin-left: calc(25% + 24px)
+      padding-left: calc(25% + 24px);
+      .Button--right { float: right }
     }
   }
   

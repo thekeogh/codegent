@@ -25,12 +25,15 @@
         {{ csrf_field() }}
         
         @foreach ($fields as $name => $field)
-            {{ $form->render($name, $field) }}
+            {{ $form->render($name, $field, $record) }}
         @endforeach
         
         <div class="AdminForm__row AdminForm__row--buttons">
             <div class="AdminForm__buttons">
                 <button type="submit" class="Button Button--box">{{ $type == 'create' ? 'Create ' . strtolower($what) : 'Save changes' }}</button>
+                @if ($type == 'edit')
+                    <a href="{{ $form->getIndexPath() }}" class="Button Button--box Button--right">Cancel</a>
+                @endif
             </div>
         </div>
         

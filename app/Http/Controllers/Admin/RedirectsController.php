@@ -21,6 +21,11 @@ class RedirectsController extends Controller
      */
     protected $model = \App\Redirect::class;
     
+    /**
+     * The form request for the resource
+     * 
+     * @var string
+     */
     protected $request = \App\Http\Requests\Admin\Redirect::class;
     
     /**

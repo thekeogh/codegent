@@ -10,14 +10,15 @@ class Form extends Admin
     /**
      * Render the form field to the browser
      * 
-     * @param  string $name  The name of the field
-     * @param  array  $field The form field array of details
+     * @param  string                               $name   The name of the field
+     * @param  array                                $field  The form field array of details
+     * @param  Illuminate\Database\Eloquent\Model   $record The record (if we are editing)
      * @return HtmlString
      */
-    public function render($name, $field)
+    public function render($name, $field, $record = null)
     {
         $type = $field['type'];
-        return $this->$type($name, $field);
+        return $this->$type($name, $field, $record);
     }
     
     //
@@ -27,27 +28,36 @@ class Form extends Admin
     /**
      * Return a text field
      * 
-     * @param  string $name  The name of the field
-     * @param  array  $field The form field array of details
+     * @param  string                               $name   The name of the field
+     * @param  array                                $field  The form field array of details
+     * @param  Illuminate\Database\Eloquent\Model   $record The record (if we are editing)
      * @return HtmlString
      */
-    private function text($name, $field)
+    private function text($name, $field, $record = null)
     {
         return new HtmlString($this->wrapper(
             $this->label($name, $field) . '
             <div class="AdminForm__field">
-                <input type="'. $this->type($field) .'" name="'. $name .'" id="'. $this->id($name) .'" '. $this->maxlength($field) .' value="" '. $this->placeholder($field) .' class="AdminForm__control AdminForm__control--input" />
+                <input type="'. $this->type($field) .'" name="'. $name .'" id="'. $this->id($name) .'" '. $this->maxlength($field) .' value="'. $this->value($name, $record) .'" '. $this->placeholder($field) .' class="AdminForm__control AdminForm__control--input" />
             </div>'
         ));       
     }
     
-    private function select($name, $field)
+    /**
+     * Return a select field
+     * 
+     * @param  string                               $name   The name of the field
+     * @param  array                                $field  The form field array of details
+     * @param  Illuminate\Database\Eloquent\Model   $record The record (if we are editing)
+     * @return HtmlString
+     */
+    private function select($name, $field, $record = null)
     {
         return new HtmlString($this->wrapper(
             $this->label($name, $field) . '
             <div class="AdminForm__field">
                 <select name="'. $name .'" id="'. $this->id($name) .'" class="AdminForm__control AdminForm__control--select">
-                    '. $this->options($field) .'
+                    '. $this->options($name, $field, $record) .'
                 </select>
             </div>'
         )); 
@@ -72,17 +82,46 @@ class Form extends Admin
     /**
      * Return the select options
      * 
-     * @param  array  $field The form field array of details
+     * @param  string                               $name   The name of the field
+     * @param  array                                $field  The form field array of details
+     * @param  Illuminate\Database\Eloquent\Model   $record The record (if we are editing)
      * @return string
      */
-    private function options($field)
+    private function options($name, $field, $record = null)
     {
         if (! isset($field['options'])) return '';
         $options = '<option value="">'. array_get($field, 'placeholder', 'Please Select...') .'</option>';
         foreach ($field['options'] as $value => $label) {
-            $options .= '<option value="'. $value .'">'. $label .'</option>';
+            $options .= '<option value="'. $value .'" '. $this->selected($name, $value, $record) .'>'. $label .'</option>';
         };
         return $options;
+    }
+    
+    /**
+     * Return the value for a input
+     * 
+     * @param  string                               $name   The name of the field
+     * @param  Illuminate\Database\Eloquent\Model   $record The record (if we are editing)
+     * @return string
+     */
+    private function value($name, $record = null)
+    {
+        return old($name, $record ? $record->$name : null);
+    }
+    
+    /**
+     * Return a selected value for selects if the value matches
+     * 
+     * @param  string                               $name   The name of the field
+     * @param  string                               $value  The value of the option
+     * @param  Illuminate\Database\Eloquent\Model   $record The record (if we are editing)
+     * @return string
+     */
+    private function selected($name, $value, $record = null)
+    {
+        if (($record and $value == $record->$name) or old($name) == $value) {
+            return 'selected="selected"';
+        }
     }
     
     /**
