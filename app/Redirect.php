@@ -21,4 +21,12 @@ class Redirect extends Model
      */
     protected $fillable = ['status', 'from', 'to'];
     
+    /**
+     * The scope for the CMS grid
+     */
+    public function scopeCms($query)
+    {
+        return $query;
+    }
+    
 }

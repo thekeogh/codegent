@@ -24,8 +24,8 @@ class Redirect extends FormRequest
     public function rules()
     {
         return [
-            'to' => 'required',
-            'from' => 'required',
+            'to' => 'required|max:255',
+            'from' => 'required|max:255',
             'status' => 'required'
         ];
     }

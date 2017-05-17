@@ -195,7 +195,7 @@ class Controller extends AppController
     protected function getListing()
     {
         $query = request()->get('q');
-        $listing = $this->_model;
+        $listing = $this->_model->cms();
         if ($query) {
             foreach ($this->searchable as $searchee) {
                 $listing = $listing->orWhere($searchee, 'LIKE', "%{$query}%");
