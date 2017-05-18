@@ -18,7 +18,7 @@
             <a href="/" class="Logo Logo--small" target="_blank" title="Visit website">Codegent</a>
             <nav class="AdminNav">
                 <a href="{{ route('redirects.index') }}" class="AdminNav__item AdminNav__item--redirects LinkWhite">Redirects</a>
-                <a href="#" class="AdminNav__item AdminNav__item--blogcats LinkWhite">Blog Categories</a>
+                <a href="{{ route('categories.index') }}" class="AdminNav__item AdminNav__item--blogcats LinkWhite">Blog Categories</a>
                 <a href="#" class="AdminNav__item AdminNav__item--blogarticles LinkWhite">Blog Articles</a>
                 <a href="#" class="AdminNav__item AdminNav__item--media LinkWhite">Media</a>
                 <a href="{{ route('logout') }}" class="LinkWhite AdminNav__item AdminNav__item--sep" title="Logout"><i class="material-icons">power_settings_news</i></a>

@@ -140,8 +140,8 @@
     }
   }
   &.Redirects .AdminNav__item--redirects { color: $Color__orange__brand !important }
-  &.BlogCategories .AdminNav__item--blogcats { color: $Color__orange__brand !important }
-  &.BlogArticles .AdminNav__item--blogarticles { color: $Color__orange__brand !important }
+  &.Categories .AdminNav__item--blogcats { color: $Color__orange__brand !important }
+  &.Articles .AdminNav__item--blogarticles { color: $Color__orange__brand !important }
   &.Media .AdminNav__item--media { color: $Color__orange__brand !important }
   
   /**

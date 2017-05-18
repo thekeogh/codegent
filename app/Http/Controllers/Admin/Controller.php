@@ -184,7 +184,11 @@ class Controller extends AppController
      */
     public function destroy($id)
     {
-        //
+        $record = $this->_model->find($id);
+        if (! $record) return redirect()->to($this->admin->getIndexPath())->withError("Couldn't find a {$this->what} with that ID, please try again!");
+        $record->delete();
+        // Back to the index with a message
+        return redirect()->to($this->admin->getIndexPath())->withSuccess("{$this->what} deleted successfully!");
     }
     
     /**

@@ -47,7 +47,7 @@
                 @endforeach
                 @if ($deletable)
                     <td class="Listing__column">
-                        <form method="post" action="{{ $listing->getDestroyPath(['id' => $result->id]) }}">
+                        <form method="post" action="{{ $listing->getDestroyPath(['id' => $result->id]) }}" class="DeleteForm">
                             <input type="hidden" name="_method" value="DELETE" />
                             {{ csrf_field() }}
                             <button type="submit" class="Listing__action Listing__action--danger"><i class="material-icons">delete_forever</i></button>

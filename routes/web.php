@@ -21,6 +21,7 @@ Route::post('contact', ['uses' => 'ContactController@contacting', 'as' => 'conta
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', function() { return redirect()->route('redirects.index'); });
     Route::resource('redirects', 'RedirectsController', ['except' => ['show'], 'parameters' => ['redirects' => 'id']]);
+    Route::resource('blog/categories', 'BlogCategoriesController', ['except' => ['show'], 'parameters' => ['categories' => 'id']]);
     // auth routes
     Route::get('login', ['uses' => 'Auth\LoginController@showLoginForm', 'as' => 'login']);
     Route::post('login', ['uses' => 'Auth\LoginController@login']);

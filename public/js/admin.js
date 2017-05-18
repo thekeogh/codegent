@@ -10345,6 +10345,13 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
    * Simple, just hide alerts after xxx seconds
    */
   __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.Alert--autohide').delay(5000).fadeOut('fast');
+
+  /**
+   * Hook on to delete froms and just prompt before they delete
+   */
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.DeleteForm').on('submit', function () {
+    return confirm('Are you really sure you want to nuke this record forever?');
+  });
 });
 
 /***/ }),
