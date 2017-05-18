@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as AppController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Illuminate\Http\File;
+use Image;
 
 class Controller extends AppController
 {
@@ -44,6 +47,13 @@ class Controller extends AppController
      * @var boolean
      */
     protected $deletable = false;
+    
+    /**
+     * Does the resource have file uploads?
+     * 
+     * @var boolean
+     */
+    protected $uploads = false;
     
     /**
      * Columns that are searchable by the keyword search
@@ -94,6 +104,11 @@ class Controller extends AppController
      */
     public function index()
     {
+        
+        
+        
+        //dd(\Storage::disk('s3')->files('/www/img'));
+        
         return view('admin.form.list', [
             'what' => $this->what,
             'grid' => $this->grid,
@@ -115,6 +130,7 @@ class Controller extends AppController
             'what' => $this->what,
             'method' => 'POST',
             'action' => $this->admin->getStorePath(),
+            'uploads' => $this->uploads,
             'fields' => $this->fields,
             'record' => null
         ]);
@@ -133,6 +149,7 @@ class Controller extends AppController
         // Save it
         $params = $request->all();
         $this->dates($params);
+        $this->image($params);
         $record = $this->_model->create($params);
         $this->multi($record);
         // Back to the index with a message
@@ -156,6 +173,7 @@ class Controller extends AppController
             'what' => $this->what,
             'method' => 'PUT',
             'action' => $this->admin->getUpdatePath(['id' => $id]),
+            'uploads' => $this->uploads,
             'fields' => $this->fields,
             'record' => $record
         ]);
@@ -176,26 +194,12 @@ class Controller extends AppController
         $record = $this->getRecord($id);
         $params = $request->all();
         $this->dates($params);
+        $this->image($params);
         $record->fill($params);
         $record->save();
         $this->multi($record);
         // Back to the index with a message
         return redirect()->to($this->admin->getIndexPath())->withSuccess("{$this->what} updated successfully!");
-    }
-
-    /**
-     * Looks at the request and add many to many relations if they exist
-     * 
-     * @param  Illuminate\Database\Eloquent\Model $record
-     * @return void
-     */
-    private function multi($record)
-    {
-        foreach (request()->all() as $name => $value) {
-            if (is_array($value)) {
-                $record->$name()->sync($value);
-            }
-        }
     }
     
     /**
@@ -234,6 +238,66 @@ class Controller extends AppController
         // we got dates, loop and carbonise
         foreach ($dates as $name => $parts) {
             $params[$name] = new Carbon("{$parts['year']}-{$parts['month']}-{$parts['day']} {$parts['hour']}:{$parts['minute']}");
+        }
+    }
+    
+    /**
+     * Upload an image after resizing
+     * 
+     * @param  array &$params The request we want to add to
+     * @return void
+     */
+    private function image(&$params)
+    {
+        foreach ($params as $name => $value) {
+            if (request()->hasFile($name)) {
+                // We got a file, store it first
+                $uuid = str_random(15);
+                $file = request()->file($name)->store('images');
+                $filename = request()->file($name)->getClientOriginalName();
+                $ext = request()->file($name)->guessClientExtension();
+                $path = config('filesystems.disks.local.root') . '/' . $file;
+                // large
+                $large = Image::make($path);
+                $large->resize(1024, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+                $large_path = config('filesystems.disks.local.root') . '/images/large_' . $filename;
+                $large->save($large_path, 100);
+                // thumb
+                $thumb = Image::make($path);
+                $thumb->resize(600, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+                $thumb_path = config('filesystems.disks.local.root') . '/images/thumb_' . $filename;
+                $thumb->save($thumb_path, 100);
+                // store them
+                $uploaded_large = Storage::disk('s3')->putFileAs('www/uploads/img/original/' . $uuid, new File($large_path), '845x2000.'. $ext , 'public');
+                $uploaded_thumb = Storage::disk('s3')->putFileAs('www/uploads/img/thumb/' . $uuid, new File($thumb_path), '269x293_50_50.'. $ext, 'public');
+                // delete
+                unlink($path);
+                unlink($large_path);
+                unlink($thumb_path);
+                // finish this shit
+                $params[$name] = env('CDN_URL') . 'uploads/img/original/' . $uuid . '/845x2000.'. $ext;
+            }
+        }
+    }
+    
+    /**
+     * Looks at the request and add many to many relations if they exist
+     * 
+     * @param  Illuminate\Database\Eloquent\Model $record
+     * @return void
+     */
+    private function multi($record)
+    {
+        foreach (request()->all() as $name => $value) {
+            if (is_array($value)) {
+                $record->$name()->sync($value);
+            }
         }
     }
     

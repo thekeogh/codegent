@@ -156,6 +156,36 @@ class Form extends Admin
     }
     
     /**
+     * Return an image upload field
+     * 
+     * @param  string                               $name   The name of the field
+     * @param  array                                $field  The form field array of details
+     * @param  Illuminate\Database\Eloquent\Model   $record The record (if we are editing)
+     * @return HtmlString
+     */
+    private function image($name, $field, $record = null)
+    {
+        $html = $this->wrapper($this->label($name, $field) . '
+            <div class="AdminForm__field">
+                <input
+                    type="file"
+                    name="'. $name .'"
+                    id="'. $this->id($name) .'"
+                    class="AdminForm__control AdminForm__control--file"
+                >
+            </div>
+        ');
+        if ($record and $record->$name) {
+            $html .= $this->wrapper('<label class="AdminForm__label">Current image</label>
+                <div class="AdminForm__field">
+                    <img src="'. $record->$name .'" width="200">
+                </div>'
+            , 'AdminForm__row--top');
+        }
+        return new HtmlString($html);         
+    }
+    
+    /**
      * Return a date and time field
      * 
      * @param  string                               $name   The name of the field

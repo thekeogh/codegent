@@ -43,6 +43,13 @@ class BlogArticlesController extends Controller
     protected $deletable = true;
     
     /**
+     * Does the resource have file uploads?
+     * 
+     * @var boolean
+     */
+    protected $uploads = true;
+    
+    /**
      * Columns that are searchable by the keyword search
      * 
      * @var array
@@ -124,6 +131,10 @@ class BlogArticlesController extends Controller
             'required' => true,
         ],
         [],
+        'image_url' => [
+            'type' => 'image',
+            'label' => 'Image'
+        ],
         'youtube_id' => [
             'type' => 'text',
             'label' => 'YouTube video ID',
