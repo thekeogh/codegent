@@ -21,6 +21,15 @@ class BlogCategory extends Model
      */
     protected $fillable = ['title', 'slug'];
     
+    
+    /**
+     * The articles that belong to the category.
+     */
+    public function articles()
+    {
+        return $this->belongsToMany('App\BlogArticle', 'blog_category_article', 'category_id', 'article_id');
+    }
+    
     /**
      * The scope for the CMS grid
      */

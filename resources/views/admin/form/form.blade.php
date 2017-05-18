@@ -25,7 +25,11 @@
         {{ csrf_field() }}
         
         @foreach ($fields as $name => $field)
-            {{ $form->render($name, $field, $record) }}
+            @if (! $field) 
+                <div class="AdminForm__sep"></div>
+            @else
+                {{ $form->render($name, $field, $record) }}
+            @endif
         @endforeach
         
         <div class="AdminForm__row AdminForm__row--buttons">

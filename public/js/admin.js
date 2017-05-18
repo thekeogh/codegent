@@ -10352,6 +10352,13 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
   __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.DeleteForm').on('submit', function () {
     return confirm('Are you really sure you want to nuke this record forever?');
   });
+
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.Markdown').each(function () {
+    new SimpleMDE({ element: this });
+    //console.log($(this));
+  });
+
+  //simplemde = new SimpleMDE({ element: $("#MyID")[0] });
 });
 
 /***/ }),

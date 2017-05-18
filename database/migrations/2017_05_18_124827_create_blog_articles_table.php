@@ -21,7 +21,7 @@ class CreateBlogArticlesTable extends Migration
             $table->string('summary', 2000)->nullable();
             $table->text('body');
             $table->string('image_url', 255)->nullable();
-            $table->string('youtube_url', 255)->nullable();
+            $table->string('youtube_id', 30)->nullable();
             $table->dateTime('published_at');
             $table->timestamps();
         });

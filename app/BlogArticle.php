@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BlogCategory extends Model
+class BlogArticle extends Model
 {
     
     /**
@@ -19,7 +19,7 @@ class BlogCategory extends Model
      *
      * @var array
      */
-    protected $fillable = ['status', 'title', 'slug', 'summary', 'body', 'image_url', 'youtube_url', 'published_at'];
+    protected $fillable = ['status', 'title', 'slug', 'summary', 'body', 'image_url', 'youtube_id', 'published_at'];
     
     /**
      * The attributes that should be mutated to dates.
@@ -31,7 +31,15 @@ class BlogCategory extends Model
         'created_at',
         'updated_at'
     ];
-
+    
+    /**
+     * The categories that belong to the article.
+     */
+    public function categories()
+    {
+        return $this->belongsToMany('App\BlogCategory', 'blog_category_article', 'article_id', 'category_id');
+    }
+    
     /**
      * The scope for the CMS grid
      */

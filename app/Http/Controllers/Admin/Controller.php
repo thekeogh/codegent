@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as AppController;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class Controller extends AppController
 {
@@ -130,11 +131,14 @@ class Controller extends AppController
         // Call the request first
         $request = app()->make($this->request);
         // Save it
-        $this->_model->create($request->all());
+        $params = $request->all();
+        $this->dates($params);
+        $record = $this->_model->create($params);
+        $this->multi($record);
         // Back to the index with a message
         return redirect()->to($this->admin->getIndexPath())->withSuccess("{$this->what} created successfully!");
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -170,12 +174,30 @@ class Controller extends AppController
         $request = app()->make($this->request);
         // Save it
         $record = $this->getRecord($id);
-        $record->fill($request->all());
+        $params = $request->all();
+        $this->dates($params);
+        $record->fill($params);
         $record->save();
+        $this->multi($record);
         // Back to the index with a message
         return redirect()->to($this->admin->getIndexPath())->withSuccess("{$this->what} updated successfully!");
     }
 
+    /**
+     * Looks at the request and add many to many relations if they exist
+     * 
+     * @param  Illuminate\Database\Eloquent\Model $record
+     * @return void
+     */
+    private function multi($record)
+    {
+        foreach (request()->all() as $name => $value) {
+            if (is_array($value)) {
+                $record->$name()->sync($value);
+            }
+        }
+    }
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -189,6 +211,30 @@ class Controller extends AppController
         $record->delete();
         // Back to the index with a message
         return redirect()->to($this->admin->getIndexPath())->withSuccess("{$this->what} deleted successfully!");
+    }
+    
+    /**
+     * for store and update, check for date fields and add to the request
+     * 
+     * @param  array &$params The request we want to add to
+     * @return void
+     */
+    private function dates(&$params)
+    {
+        $dates = [];
+        // loop the params and extract the date values
+        foreach ($params as $name => $value) {
+            if (str_contains($name, '_dt_')) {
+                $exp = explode('_dt_', $name);
+                $dates[$exp[0]][$exp[1]] = $value;
+            }
+        }
+        // no dates? That's fine, leave
+        if (! $dates) return;
+        // we got dates, loop and carbonise
+        foreach ($dates as $name => $parts) {
+            $params[$name] = new Carbon("{$parts['year']}-{$parts['month']}-{$parts['day']} {$parts['hour']}:{$parts['minute']}");
+        }
     }
     
     /**
