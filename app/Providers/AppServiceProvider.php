@@ -5,8 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
-use App\BlogArticle, App\BlogCategory;
-use App\Observers\BlogArticleObserver, App\Observers\BlogCategoryObserver;
+use App\BlogArticle, App\BlogCategory, App\Tag;
+use App\Observers\BlogArticleObserver, App\Observers\BlogCategoryObserver, App\Observers\TagObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         BlogArticle::observe(BlogArticleObserver::class);
         BlogCategory::observe(BlogCategoryObserver::class);
+        Tag::observe(TagObserver::class);
     }
 
     /**

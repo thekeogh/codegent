@@ -15,6 +15,7 @@ class CreateBlogArticlesTable extends Migration
     {
         Schema::create('blog_articles', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('admin_id')->default(0)->unsigned();
             $table->string('status', 15)->default('live');
             $table->string('title', 150);
             $table->string('slug', 150);

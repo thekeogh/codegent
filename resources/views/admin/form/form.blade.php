@@ -22,6 +22,7 @@
     @include('components.admin.buttons', ['title' => $what])
     <form method="post" action="{{ $action }}" class="AdminForm" enctype="{{ $uploads ? 'multipart/form-data' : 'application/x-www-form-urlencoded' }}">
         <input type="hidden" name="_method" value="{{ $method }}" />
+        <input type="hidden" name="admin_id" value="{{ auth()->user()->id }}" />
         {{ csrf_field() }}
         
         @foreach ($fields as $name => $field)

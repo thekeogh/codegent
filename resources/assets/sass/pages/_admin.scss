@@ -142,7 +142,7 @@
   &.Redirects .AdminNav__item--redirects { color: $Color__orange__brand !important }
   &.Categories .AdminNav__item--blogcats { color: $Color__orange__brand !important }
   &.Articles .AdminNav__item--blogarticles { color: $Color__orange__brand !important }
-  &.Media .AdminNav__item--media { color: $Color__orange__brand !important }
+  &.Tags .AdminNav__item--tags { color: $Color__orange__brand !important }
   
   /**
    * Main
@@ -367,6 +367,20 @@
       margin-top: 12px;
       padding-left: calc(25% + 24px);
       .Button--right { float: right }
+    }
+  }
+  .AdminImage {
+    float: left;
+    position: relative;
+    img { display: block }
+    &__remove {
+      text-decoration: none !important;
+      background: #000;
+      color: #fff !important;
+      right: 0;
+      top: 0;
+      position: absolute;
+      i { display: block }
     }
   }
   

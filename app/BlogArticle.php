@@ -19,7 +19,7 @@ class BlogArticle extends Model
      *
      * @var array
      */
-    protected $fillable = ['status', 'title', 'slug', 'summary', 'body', 'image_url', 'youtube_id', 'published_at'];
+    protected $fillable = ['status', 'admin_id', 'title', 'slug', 'summary', 'body', 'image_url', 'youtube_id', 'published_at'];
     
     /**
      * The attributes that should be mutated to dates.
@@ -38,6 +38,22 @@ class BlogArticle extends Model
     public function categories()
     {
         return $this->belongsToMany('App\BlogCategory', 'blog_category_article', 'article_id', 'category_id');
+    }
+    
+    /**
+     * The tags that belong to the article.
+     */
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag', 'tag_blog_article', 'article_id', 'tag_id');
+    }
+    
+    /**
+     * Get the admin that owns the article.
+     */
+    public function admin()
+    {
+        return $this->belongsTo('App\Admin');
     }
     
     /**

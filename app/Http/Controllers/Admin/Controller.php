@@ -104,11 +104,6 @@ class Controller extends AppController
      */
     public function index()
     {
-        
-        
-        
-        //dd(\Storage::disk('s3')->files('/www/img'));
-        
         return view('admin.form.list', [
             'what' => $this->what,
             'grid' => $this->grid,
@@ -249,6 +244,16 @@ class Controller extends AppController
      */
     private function image(&$params)
     {
+        
+        foreach ($params as $name => $value) {
+            if (str_contains($name, 'removeimage_') and $value) {
+                $field = explode('removeimage_', $name)[1];
+                // Lets remove it
+                $params[$field] = null;
+                return;
+            }
+        }
+        
         foreach ($params as $name => $value) {
             if (request()->hasFile($name)) {
                 // We got a file, store it first

@@ -15,5 +15,6 @@ class BlogArticleObserver
     public function deleting(BlogArticle $article)
     {
         $article->categories()->detach();
+        $article->tags()->detach();
     }
 }

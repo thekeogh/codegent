@@ -15,6 +15,7 @@ Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home']);
 Route::get('about', ['uses' => 'AboutController@index', 'as' => 'about']);
 Route::get('products', ['uses' => 'ProductsController@index', 'as' => 'products']);
 Route::get('agency', ['uses' => 'AgencyController@index', 'as' => 'agency']);
+Route::get('blog', ['uses' => 'BlogController@index', 'as' => 'blog.index']);
 Route::get('contact', ['uses' => 'ContactController@index', 'as' => 'contact']);
 Route::post('contact', ['uses' => 'ContactController@contacting', 'as' => 'contacting']);
 
@@ -23,6 +24,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::resource('redirects', 'RedirectsController', ['except' => ['show'], 'parameters' => ['redirects' => 'id']]);
     Route::resource('blog/categories', 'BlogCategoriesController', ['except' => ['show'], 'parameters' => ['categories' => 'id']]);
     Route::resource('blog/articles', 'BlogArticlesController', ['except' => ['show'], 'parameters' => ['articles' => 'id']]);
+    Route::resource('tags', 'TagsController', ['except' => ['show'], 'parameters' => ['tags' => 'id']]);
     // auth routes
     Route::get('login', ['uses' => 'Auth\LoginController@showLoginForm', 'as' => 'login']);
     Route::post('login', ['uses' => 'Auth\LoginController@login']);

@@ -61,16 +61,17 @@
                 <li class="Primary__item"><a href="{{ route('agency') }}" class="Primary__link Primary__link--agency">Agency</a></li>
                 <li class="Primary__item Primary__link--thinking">
                     <i class="material-icons Primary__more">add</i>
-                    <a href="#" class="Primary__link">Thinking</a>
+                    <a href="{{ route('blog.index') }}" class="Primary__link Primary__link--thinking">Thinking</a>
                     <ul class="Secondary Secondary--hidden">
-                        <li class="Secondary__item"><a href="" class="Secondary__link">Blog</a></li>
-                        <li class="Secondary__item"><a href="" class="Secondary__link">Feed</a></li>
+                        <li class="Secondary__item"><a href="{{ route('blog.index') }}" class="Secondary__link Secondary__link--thinking">Blog</a></li>
+                        <li class="Secondary__item"><a href="" class="Secondary__link Secondary__link--feed">Feed</a></li>
                     </ul>
                 </li>
                 <li class="Primary__item"><a href="{{ route('contact') }}" class="Primary__link Primary__link--contact">Contact</a></li>
             </ul>
         </nav>
     </div></header>
+    @yield('secondary')
     
     {{-- Main --}}
     @yield('main')

@@ -52,13 +52,33 @@
 .About .Primary__link--about { color: $Color__orange__brand !important }
 .Products .Primary__link--products { color: $Color__orange__brand !important }
 .Agency .Primary__link--agency { color: $Color__orange__brand !important }
-.Thinking .Primary__link--thinking { color: $Color__orange__brand !important }
+.Thinking .Primary__link--thinking, .Thinking .Secondary__link--thinking { color: $Color__orange__brand !important }
 .Contact .Primary__link--contact { color: $Color__orange__brand !important }
+
+// Desktop secondary nav only, mobile doesn't use this
+.Secondary--full {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: $Color__grey--lightest;
+  .Secondary__nav {
+    @include bold;
+    margin-right: 18px;
+    padding-right: 18px;
+    border-right: solid 1px $Color__grey--darker;
+    text-decoration: none !important;
+    &:last-child {
+      margin-right: 0;
+      padding-right: 0;
+      border-right: 0
+    }
+  }
+}
 
 //
 // Responsive
 // 
 @include respond(all-phones) {
+  .Secondary { display: none }
   .Primary {
     height: $Header__height--mobile;
     &__items {
@@ -92,6 +112,8 @@
   .Secondary {
     @include thin;
     background: $Color__black--darker;
+    padding-left: 0;
+    padding-right: 0; 
     font-size: 16px;
     &__item { border-bottom: solid 1px #444 }
     &--hidden { display: none }

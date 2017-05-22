@@ -1,4 +1,5 @@
-import $ from 'jquery';
+//import $ from 'jquery';
+//import chosen from 'chosen-js';
 
 /**
  * Activate, basic, simple, old skool jQuery
@@ -15,11 +16,27 @@ $(() => {
      */
     $('.DeleteForm').on('submit', () => confirm('Are you really sure you want to nuke this record forever?'));
     
+    /**
+     * Hook up Markdown fields
+     */
     $('.Markdown').each(function() {
         new SimpleMDE({ element: this });
-        //console.log($(this));
     });
     
-    //simplemde = new SimpleMDE({ element: $("#MyID")[0] });
+    /**
+     * Hook up chosen fields
+     */
+    $('.chosen-select').chosen();
+    
+    /**
+     * Remove images                                  [description]
+     */
+    $('.AdminImage__remove').on('click', function(e) {
+        e.preventDefault();
+        let $field = $(this).siblings('.AdminImage__removefield');
+        let $parent = $(this).parents('.AdminForm__row');
+        $field.val(1);
+        $parent.hide();
+    })
     
 });

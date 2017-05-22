@@ -1,0 +1,85 @@
+.Thinking {
+  
+  > .Main { padding-top: 18px; padding-bottom: 18px }
+  
+  &__title, &__subtitle { @include light }
+  &__title {
+    margin: 0 0 24px;
+    font-size: 28px;
+  }
+  &__subtitle {
+    margin: 0 0 16px;
+    font-size: 20px;
+  }
+  
+  .Listing {
+    display: flex
+  }
+  .Articles {
+    flex-grow: 1;
+    flex-shrink: 0
+  }
+  .Sidebar {
+    width: 280px;
+    margin-left: 30px;
+    padding: 0 0 0 30px;
+    border-left: solid 1px $Color__grey--lightest;
+    flex-shrink: 0;
+    flex-direction: column;
+    display: flex;
+    &__item {
+      margin: 0 0 6px;
+      &:last-child {
+        margin: 0;
+      }
+    }
+    &__post {
+      height: 140px;
+      margin: 0 0 18px;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      display: block
+    }
+    section {
+      margin: 0 0 20px;
+      padding: 0 0 18px;
+      border-bottom: solid 1px $Color__grey--lightest;
+      font-size: 14px;
+      &:last-child {
+        margin: 0;
+        padding: 0; 
+        border: 0
+      }
+    }
+  }
+  
+}
+
+//
+// Responsive
+// 
+@include respond(all-devices) {
+  
+  .Thinking {
+    .Listing { flex-direction: column }
+    .Articles, .Sidebar {
+      width: auto;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+    .Articles { margin-bottom: 24px }
+    .Sidebar {
+      section { order: 2 }
+      &--categories { order: 0 !important }
+      &--recent {
+        margin: 0 0 20px !important;
+        padding: 0 0 18px !important;
+        order: 1 !important;
+        border-bottom: solid 1px $Color__grey--lightest !important
+      }
+    }
+  }
+  
+}

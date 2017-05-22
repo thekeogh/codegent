@@ -2,11 +2,24 @@
 
 use Illuminate\Support\Debug\Dumper;
 
+if (! function_exists('thumb')) {
+    /**
+     * Convert a large/original blog article path to thumb (hacky due to old data)
+     *
+     * @param  string  $url
+     * @return string
+     */
+    function thumb($url)
+    {
+        return str_ireplace(['/original/', '845x2000.'], ['/thumb/', '269x293_50_50.'], $url);
+    }
+}
+
 if (! function_exists('cdn')) {
     /**
-     * Assign high numeric IDs to a config item to force appending.
+     * Get the CDN URL and bind the path to it
      *
-     * @param  array  $array
+     * @param  string  $path
      * @return array
      */
     function cdn($path)

@@ -148,11 +148,11 @@ class Form extends Admin
         return new HtmlString($this->wrapper(
             $this->label($name, $field) . '
             <div class="AdminForm__field">
-                <select name="'. $name .'[]" id="'. $this->id($name) .'" class="AdminForm__control AdminForm__control--select" multiple="6">
+                <select name="'. $name .'[]" id="'. $this->id($name) .'" class="chosen-select AdminForm__control AdminForm__control--select" multiple="6">
                     '. $options .'
                 </select>
             </div>'
-        , 'AdminForm__row--top')); 
+        )); 
     }
     
     /**
@@ -178,7 +178,11 @@ class Form extends Admin
         if ($record and $record->$name) {
             $html .= $this->wrapper('<label class="AdminForm__label">Current image</label>
                 <div class="AdminForm__field">
-                    <img src="'. $record->$name .'" width="200">
+                    <div class="AdminImage">
+                        <input type="hidden" class="AdminImage__removefield" name="removeimage_'. $name .'" value="0">
+                        <a href="#" class="AdminImage__remove" title="Remove image"><i class="material-icons">close</i></a>
+                        <img src="'. $record->$name .'" width="200">
+                    </div>
                 </div>'
             , 'AdminForm__row--top');
         }

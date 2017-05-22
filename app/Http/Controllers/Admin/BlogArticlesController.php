@@ -142,6 +142,12 @@ class BlogArticlesController extends Controller
             'placeholder' => 'F0K_YnMUPxU'
         ],
         [],
+        'tags' => [
+            'type' => 'multiselect',
+            'label' => 'Tags',
+            'options' => \App\Tag::class,
+            'required' => true
+        ],
         'published_at' => [
             'type' => 'datetime',
             'label' => 'Published date',

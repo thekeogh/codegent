@@ -9,6 +9,7 @@
     
     <link rel="icon" href="{{ cdn('favicon.png') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chosen/1.7.0/chosen.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,200,200i,300,300i,500,500i|Droid+Sans+Mono|Material+Icons">
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 </head>
@@ -21,6 +22,7 @@
                 <a href="{{ route('redirects.index') }}" class="AdminNav__item AdminNav__item--redirects LinkWhite">Redirects</a>
                 <a href="{{ route('categories.index') }}" class="AdminNav__item AdminNav__item--blogcats LinkWhite">Blog Categories</a>
                 <a href="{{ route('articles.index') }}" class="AdminNav__item AdminNav__item--blogarticles LinkWhite">Blog Articles</a>
+                <a href="{{ route('tags.index') }}" class="AdminNav__item AdminNav__item--tags LinkWhite">Tags</a>
                 <a href="{{ route('logout') }}" class="LinkWhite AdminNav__item AdminNav__item--sep" title="Logout"><i class="material-icons">power_settings_news</i></a>
             </nav>
         </header>
@@ -41,7 +43,8 @@
         <footer class="AdminFooter"></footer>
     @show
     
-    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/g/chosen@1.7.0(chosen.jquery.js),simplemde@1.11.2"></script>
     <script src="{{ mix('/js/admin.js') }}"></script>
 </body>
 </html>
