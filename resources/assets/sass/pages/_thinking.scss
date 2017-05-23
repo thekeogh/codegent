@@ -2,14 +2,18 @@
   
   > .Main { padding-top: 18px; padding-bottom: 18px }
   
-  &__title, &__subtitle { @include light }
+  &__title, &__sidetitle { @include light }
   &__title {
     margin: 0 0 24px;
     font-size: 28px;
   }
-  &__subtitle {
+  &__sidetitle {
     margin: 0 0 16px;
     font-size: 20px;
+  }
+  &__subtitle {
+    margin: 0;
+    font-size: 24px;
   }
   
   .Listing {
@@ -17,7 +21,6 @@
   }
   .Articles {
     flex-grow: 1;
-    flex-shrink: 0
   }
   .Sidebar {
     width: 280px;
@@ -54,13 +57,44 @@
     }
   }
   
+  .Article {
+    margin: 0 0 34px;
+    padding: 0 0 34px;
+    border-bottom: solid 1px $Color__grey--lightest;
+    display: flex;
+    &__image {
+      width: 280px;
+      height: 280px;
+      margin-right: 30px;
+      flex-shrink: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+    }
+    &__body {
+      flex-grow: 1;
+    }
+    &__author {
+      margin: 0 0 16px;
+      color: $Color__grey--darker;
+      font-size: 14px;
+    }
+    &__summary { margin: 0 }
+    &:lst-child {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+  }
+  
+  
+  
 }
 
 //
 // Responsive
 // 
 @include respond(all-devices) {
-  
   .Thinking {
     .Listing { flex-direction: column }
     .Articles, .Sidebar {
@@ -71,6 +105,8 @@
     }
     .Articles { margin-bottom: 24px }
     .Sidebar {
+      padding: 18px;
+      background: #f1f1f1;
       section { order: 2 }
       &--categories { order: 0 !important }
       &--recent {
@@ -81,5 +117,27 @@
       }
     }
   }
-  
+}
+@include respond(all-phones) {
+  .Thinking {
+    &__subtitle { font-size: 20px }
+    .Article {
+      &__image {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+}
+@include respond(phone-portrait) {
+  .Thinking {
+    .Article {
+      flex-direction: column;
+      &__image {
+        width: 100%;
+        height: 180px;
+        margin: 0 0 12px;
+      }
+    }
+  }
 }
