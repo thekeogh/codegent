@@ -16,6 +16,7 @@ Route::get('about', ['uses' => 'AboutController@index', 'as' => 'about']);
 Route::get('products', ['uses' => 'ProductsController@index', 'as' => 'products']);
 Route::get('agency', ['uses' => 'AgencyController@index', 'as' => 'agency']);
 Route::get('blog', ['uses' => 'BlogController@index', 'as' => 'blog.index']);
+Route::get('blog/{year}/{month}/{slug}', ['uses' => 'BlogController@show', 'as' => 'blog.show']);
 Route::get('contact', ['uses' => 'ContactController@index', 'as' => 'contact']);
 Route::post('contact', ['uses' => 'ContactController@contacting', 'as' => 'contacting']);
 

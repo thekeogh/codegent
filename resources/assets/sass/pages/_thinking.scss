@@ -16,10 +16,10 @@
     font-size: 24px;
   }
   
-  .Listing {
+  .Blog {
     display: flex
   }
-  .Articles {
+  .Content {
     flex-grow: 1;
   }
   .Sidebar {
@@ -87,6 +87,73 @@
     }
   }
   
+  //
+  // Show
+  // 
+  
+  .Author {
+    margin: 0 0 24px;
+    color: $Color__grey--darker;
+    font-size: 14px;
+    display: flex;
+    position: relative;
+    &__avatar {
+      width: 50px;
+      height: 50px;
+      margin-right: 12px;
+      border-radius: 50%;
+    }
+    &__details, &__date { padding: 4px 0 0 }
+    &__details { flex-grow: 1 }
+    &__date {
+      //align-self: flex-start;
+      //text-align: right;
+      //flex-grow: 0;
+      right: 0;
+      top: 0;
+      position: absolute;
+    }
+  }
+  
+  .Show {
+    &__image {
+      width: 100%;
+      margin: 0 0 24px;
+      display: block
+    }
+    &__links {
+      margin: 0 0 24px;
+      align-items: center;
+      display: flex
+    }
+    &__share {
+      align-items: center;
+      display: flex;
+      flex-grow: 1;
+      .stArrow { display: none !important }
+    }
+    &__link {
+      flex-grow: 0;
+      a {
+        text-decoration: none !important;
+        align-items: center;
+        display: flex
+      }
+    }
+    &__body {
+      
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
 }
@@ -96,14 +163,14 @@
 // 
 @include respond(all-devices) {
   .Thinking {
-    .Listing { flex-direction: column }
-    .Articles, .Sidebar {
+    .Blog { flex-direction: column }
+    .Content, .Sidebar {
       width: auto;
       margin: 0;
       padding: 0;
       border: 0;
     }
-    .Articles { margin-bottom: 24px }
+    .Content { margin-bottom: 24px }
     .Sidebar {
       padding: 18px;
       background: #f1f1f1;
@@ -138,6 +205,12 @@
         height: 180px;
         margin: 0 0 12px;
       }
+    }
+    .Show {
+      &__links {
+        flex-direction: column;
+      }
+      &__share { margin: 0 0 8px }
     }
   }
 }

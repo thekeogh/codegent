@@ -64,4 +64,15 @@ class BlogArticle extends Model
         return $query;
     }
     
+    /**
+     * Fetch an article to show on the frontend
+     * 
+     * @param  string $slug 
+     * @return BlogArticle
+     */
+    public function scopeShow($query, $slug)
+    {
+        return $query->with(['admin', 'tags', 'categories'])->where('status', 'live')->where('slug', $slug);
+    }
+    
 }

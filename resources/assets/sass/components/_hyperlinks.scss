@@ -3,7 +3,16 @@ a, a:visited {
   color: $Color__black--darkest;
   text-decoration: underline;
   &:hover {
-    color: $Color__orange__brand;
+    color: $Color__orange--brand;
     text-decoration: none
+  }
+}
+
+a.inverse, a.inverse:visited {
+  transition: color .2s;
+  color: $Color__orange--brand;
+  text-decoration: none;
+  &:hover {
+    color: $Color__black--darkest;
   }
 }
