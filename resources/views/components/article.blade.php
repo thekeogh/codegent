@@ -1,6 +1,6 @@
 <article class="Article">
     @if ($image)
-        <a href="{{ route('blog.show', [$date->format('Y'), $date->format('j'), $slug]) }}" class="Article__image" style="background-image: url({{ thumb($image) }})"></a>
+        <a href="{{ route('blog.show', [$date->format('Y'), $date->format('j'), $slug]) }}" class="Article__image" style="background-image: url({{ $image }})"></a>
     @endif
     <div class="Article__body">
         <h2 class="Thinking__subtitle"><a href="{{ route('blog.show', [$date->format('Y'), $date->format('j'), $slug]) }}">{{ $title }}</a></h2>

@@ -36,7 +36,7 @@
                 
                 {{-- Image --}}
                 @if ($article->image_url)
-                    <img src="{{ $article->image_url }}" alt="{{ $article->title }}" title="{{ $article->title }}" class="Show__image">
+                    <img src="{{ large($article->image_url) }}" alt="{{ $article->title }}" title="{{ $article->title }}" class="Show__image">
                 @endif
                 
                 {{-- YouTube --}}
@@ -57,7 +57,10 @@
                 
                 {{-- Body --}}
                 <div class="Show__body Format">
+                    
                     {!! Markdown::convertToHtml($article->body) !!}
+                    
+                    
                 </div>
                 
                 {{-- Tags --}}

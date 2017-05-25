@@ -75,10 +75,6 @@ class RedirectsController extends Controller
             'type' => 'string',
             'main' => true
         ],
-        'to' => [
-            'label' => 'To',
-            'type' => 'string'
-        ],
         'created_at' => [
             'label' => 'Created',
             'type' => 'date'

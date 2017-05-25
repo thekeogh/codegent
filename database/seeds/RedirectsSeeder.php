@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AdminsSeeder extends Seeder
+class RedirectsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,16 +13,16 @@ class AdminsSeeder extends Seeder
     public function run()
     {
         // Old 
-        $olds = DB::connection('legacy')->table('user')->orderBy('id')->get();
+        $olds = DB::connection('legacy')->table('redirect')->orderBy('id')->get();
         // Wipe our DB
-        DB::table('admins')->truncate();
+        DB::table('redirects')->truncate();
         // Do it
         foreach ($olds as $old) {
-            DB::table('admins')->insert([
+            DB::table('redirects')->insert([
                 'id' => $old->id,
-                'name' => "{$old->firstname} {$old->surname}",
-                'email' => $old->email,
-                'password' => bcrypt(env('SEEDER_KEOGH_PWD')),
+                'status' => 'active',
+                'from' => $old->short,
+                'to' => $old->url,
                 'created_at' => $old->created_at,
                 'updated_at' => $old->updated_at,
             ]);

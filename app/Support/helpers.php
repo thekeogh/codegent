@@ -15,6 +15,32 @@ if (! function_exists('thumb')) {
     }
 }
 
+if (! function_exists('large')) {
+    /**
+     * Convert a thumb blog article path to large (hacky due to old data)
+     *
+     * @param  string  $url
+     * @return string
+     */
+    function large($url)
+    {
+        return str_ireplace(['/thumb/', basename($url)], ['/original/', '845x2000.' . pathinfo($url)['extension']], $url);
+    }
+}
+
+if (! function_exists('is_html')) {
+    /**
+     * Is the string HTML?
+     *
+     * @param  string  $string
+     * @return string
+     */
+    function is_html($string)
+    {
+      return preg_match("/<[^<]+>/",$string,$m) != 0;
+    }
+}
+
 if (! function_exists('cdn')) {
     /**
      * Get the CDN URL and bind the path to it

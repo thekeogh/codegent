@@ -314,7 +314,7 @@ class Controller extends AppController
     protected function getListing()
     {
         $query = request()->get('q');
-        $listing = $this->_model->cms();
+        $listing = $this->_model->cms()->orderBy('id', 'desc');
         if ($query) {
             foreach ($this->searchable as $searchee) {
                 $listing = $listing->orWhere($searchee, 'LIKE', "%{$query}%");
