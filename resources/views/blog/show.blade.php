@@ -39,6 +39,11 @@
                     <img src="{{ $article->image_url }}" alt="{{ $article->title }}" title="{{ $article->title }}" class="Show__image">
                 @endif
                 
+                {{-- YouTube --}}
+                @if ($article->youtube_id)
+                    <iframe width="100%" height="486" src="https://www.youtube.com/embed/{{ $article->youtube_id }}" frameborder="0" allowfullscreen class="Show__youtube"></iframe>
+                @endif
+                
                 {{-- Share --}}
                 <div class="Show__links">
                     <ul class="Show__share">
