@@ -28,6 +28,40 @@ if (! function_exists('cdn')) {
     }
 }
 
+if (! function_exists('str_replace_first')) {
+    /**
+     * Replace first occurance of a string
+     * 
+     * @param  string $from
+     * @param  string $to
+     * @param  string $subject
+     * @return string
+     */
+    function str_replace_first($from, $to, $subject)
+    {
+        $from = '/'.preg_quote($from, '/').'/';
+        return preg_replace($from, $to, $subject, 1);
+    }
+}
+
+if (! function_exists('str_replace_last')) {
+    /**
+     * Replace last occurance of a string
+     * 
+     * @param  string $from
+     * @param  string $to
+     * @param  string $subject
+     * @return string
+     */
+    function str_replace_last($from, $to, $subject)
+    {
+        $pos = strrpos($subject, $from);
+        if ($pos !== false) { $subject = substr_replace($subject, $to, $pos, strlen($from)); }
+        return $subject;
+    }
+}
+
+
 if (! function_exists('d')) {
     /**
      * Dump the passed variables but don't end the script.
