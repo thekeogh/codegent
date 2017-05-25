@@ -1,0 +1,20 @@
+.ErrorPage {
+  
+  .Main {
+    .H1 {
+      @include thin;
+      margin: -#{$Header__height--desktop} 0 24px;
+      font-size: 45px;
+      line-height: 58px;
+      text-align: center;
+      color: $Color__black--darkest;
+    }
+    p {
+      max-width: 600px;
+      margin: 0 auto 12px;
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+  
+}
