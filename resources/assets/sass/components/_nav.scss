@@ -52,7 +52,7 @@
 .About .Primary__link--about { color: $Color__orange__brand !important }
 .Products .Primary__link--products { color: $Color__orange__brand !important }
 .Agency .Primary__link--agency { color: $Color__orange__brand !important }
-.Thinking .Primary__link--thinking, .Thinking .Secondary__link--thinking { color: $Color__orange__brand !important }
+.Thinking .Primary__link--thinking, .Thinking--blog .Secondary__link--blog, .Thinking--feed .Secondary__link--feed { color: $Color__orange__brand !important }
 .Contact .Primary__link--contact { color: $Color__orange__brand !important }
 
 // Desktop secondary nav only, mobile doesn't use this

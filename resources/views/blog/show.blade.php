@@ -1,5 +1,5 @@
 @extends('layouts.www')
-@section('body_class', 'Thinking')
+@section('body_class', 'Thinking Thinking--blog')
 
 @section('type', 'article')
 @section('title', $article->title)
@@ -26,7 +26,7 @@
                         {{ $article->admin->name }}<br>
                         In
                         @foreach ($article->categories as $count => $category)
-                            <a href="" class="inverse">{{ $category->title }}</a>{{ $count+1 != count($article->categories) ? ', ' : '' }}
+                            <a href="{{ route('blog.category', $category->slug) }}" class="inverse">{{ $category->title }}</a>{{ $count+1 != count($article->categories) ? ', ' : '' }}
                         @endforeach
                     </div>
                     <div class="Author__date">
@@ -35,7 +35,9 @@
                 </div>
                 
                 {{-- Image --}}
-                <img src="{{ $article->image_url }}" alt="{{ $article->title }}" title="{{ $article->title }}" class="Show__image">
+                @if ($article->image_url)
+                    <img src="{{ $article->image_url }}" alt="{{ $article->title }}" title="{{ $article->title }}" class="Show__image">
+                @endif
                 
                 {{-- Share --}}
                 <div class="Show__links">
@@ -53,6 +55,14 @@
                     {!! Markdown::convertToHtml($article->body) !!}
                 </div>
                 
+                {{-- Tags --}}
+                <ul class="Tags">
+                    @foreach ($article->tags as $tag)
+                        <li class="Tag"><a href="{{ route('blog.tag', $tag->slug) }}" class="Tag__link">
+                            <i class="material-icons">label</i> {{ $tag->title }}
+                        </a></li>
+                    @endforeach
+                </ul>
                 
             </div>
             @include('blog._sidebar')

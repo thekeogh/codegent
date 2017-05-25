@@ -63,8 +63,8 @@
                     <i class="material-icons Primary__more">add</i>
                     <a href="{{ route('blog.index') }}" class="Primary__link Primary__link--thinking">Thinking</a>
                     <ul class="Secondary Secondary--hidden">
-                        <li class="Secondary__item"><a href="{{ route('blog.index') }}" class="Secondary__link Secondary__link--thinking">Blog</a></li>
-                        <li class="Secondary__item"><a href="" class="Secondary__link Secondary__link--feed">Feed</a></li>
+                        <li class="Secondary__item"><a href="{{ route('blog.index') }}" class="Secondary__link Secondary__link--blog">Blog</a></li>
+                        <li class="Secondary__item"><a href="{{ route('blog.feed') }}" class="Secondary__link Secondary__link--feed">Feed</a></li>
                     </ul>
                 </li>
                 <li class="Primary__item"><a href="{{ route('contact') }}" class="Primary__link Primary__link--contact">Contact</a></li>

@@ -16,9 +16,14 @@ Route::get('about', ['uses' => 'AboutController@index', 'as' => 'about']);
 Route::get('products', ['uses' => 'ProductsController@index', 'as' => 'products']);
 Route::get('agency', ['uses' => 'AgencyController@index', 'as' => 'agency']);
 Route::get('blog', ['uses' => 'BlogController@index', 'as' => 'blog.index']);
+Route::get('blog/feed', ['uses' => 'BlogController@feed', 'as' => 'blog.feed']);
 Route::get('blog/{year}/{month}/{slug}', ['uses' => 'BlogController@show', 'as' => 'blog.show']);
+Route::get('blog/category/{slug}', ['uses' => 'BlogController@category', 'as' => 'blog.category']);
+Route::get('blog/tag/{slug}', ['uses' => 'BlogController@tag', 'as' => 'blog.tag']);
 Route::get('contact', ['uses' => 'ContactController@index', 'as' => 'contact']);
 Route::post('contact', ['uses' => 'ContactController@contacting', 'as' => 'contacting']);
+Route::get("sitemap.xml", ["uses" => "SitemapController@index"]);
+Route::get("sitemap", ["uses" => "SitemapController@index"]);
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', function() { return redirect()->route('redirects.index'); });
