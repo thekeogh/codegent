@@ -22,9 +22,9 @@ if (! function_exists('large')) {
      * @param  string  $url
      * @return string
      */
-    function large($url)
+    function large($url, $filename = '845x2000', $folder = 'original')
     {
-        return str_ireplace(['/thumb/', basename($url)], ['/original/', '845x2000.' . pathinfo($url)['extension']], $url);
+        return str_ireplace(['/thumb/', basename($url)], ['/'. $folder .'/', $filename . '.' . pathinfo($url)['extension']], $url);
     }
 }
 

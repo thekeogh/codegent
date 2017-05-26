@@ -37,9 +37,21 @@
                     </div>
                 </div>
                 
-                {{-- Image --}}
-                @if ($article->image_url)
-                    <img src="{{ large($article->image_url) }}" alt="{{ $article->title }}" title="{{ $article->title }}" class="Show__image">
+                {{-- Image/Video --}}
+                @if ($article->video_url)
+                    <div class="Show__media">
+                        @if (str_contains($article->video_url, '.flv'))
+                            <object type="application/x-shockwave-flash" id="movie-63" data="//codegent-codegentltd.netdna-ssl.com/static/swf/videoplayer_v3.swf?v=1.10.14-1.10.14-" width="845" height="475">
+                                <param name="wmode" value="transparent">
+                                <param name="allowscriptaccess" value="sameDomain">
+                                <param name="flashvars" value="thumbPath={{ large($article->image_url, '845x475') }}&amp;filePath={{ $article->video_url }}&amp;notYoutube=0&amp;autoPlay=no&amp;viewMode=fitCrop&amp;smoothing=1">
+                            </object>
+                        @else
+                            <video src="{{ $article->video_url }}" controls poster="{{ large($article->image_url, '845x475_50_50', 'thumb') }}" preload="auto"></video>
+                        @endif
+                    </div>
+                @elseif ($article->image_url)
+                    <img src="{{ large($article->image_url) }}" alt="{{ $article->title }}" title="{{ $article->title }}" class="Show__media">
                 @endif
                 
                 {{-- YouTube --}}

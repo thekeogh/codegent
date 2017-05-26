@@ -22,7 +22,7 @@
         <section class="Sidebar--recent">
             <h3 class="Thinking__sidetitle">Recent posts</h3>
             @foreach ($latest as $latest_article)
-                <a href="{{ route('blog.show', [$latest_article->published_at->format('Y'), $latest_article->published_at->format('j'), $latest_article->slug]) }}" class="Sidebar__post" style="background-image: url({{ thumb($latest_article->image_url) }})"></a>
+                <a href="{{ route('blog.show', [$latest_article->published_at->format('Y'), $latest_article->published_at->format('n'), $latest_article->slug]) }}" class="Sidebar__post" style="background-image: url({{ thumb($latest_article->image_url) }})"></a>
             @endforeach
         </section>
     @endif
