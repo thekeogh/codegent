@@ -22,7 +22,11 @@ class ArticlesSeeder extends Seeder
         DB::table('tag_blog_article')->truncate();
         // Do it
         foreach ($olds as $old) {
-            $media = $old->media_id ? DB::connection('legacy')->table('media')->where('media_type', 'image')->where('id', $old->media_id)->first() : null;
+            $media = $old->media_id ? DB::connection('legacy')->table('media')->where('id', $old->media_id)->first() : null;
+            $video_url = null;
+            if ($media and in_array($media->media_type, ['flv', 'html5video', 'uploaded_video'])) {
+                $video_url = $media->remote_id;
+            }
             DB::table('blog_articles')->insert([
                 'id' => $old->id,
                 'admin_id' => $old->created_by,
@@ -32,6 +36,7 @@ class ArticlesSeeder extends Seeder
                 'summary' => $old->summary,
                 'body' => $old->content,
                 'image_url' => $media ? "https://codegent-codegentltd.netdna-ssl.com/media/thumb/{$media->uuid}/269x293_{$media->focus_x}_{$media->focus_y}.jpg" : null,
+                'video_url' => $video_url,
                 'published_at' => $old->published_date,
                 'created_at' => $old->created_at,
                 'updated_at' => $old->updated_at,

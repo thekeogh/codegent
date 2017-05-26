@@ -70,9 +70,13 @@ class BlogArticle extends Model
      * @param  string $slug 
      * @return BlogArticle
      */
-    public function scopeShow($query, $slug)
+    public function scopeShow($query, $year, $month, $slug)
     {
-        return $query->with(['admin', 'tags', 'categories'])->where('status', 'live')->where('slug', $slug);
+        return $query->with(['admin', 'tags', 'categories'])
+            ->where('status', 'live')
+            ->where('slug', $slug)
+            ->whereRaw("year(published_at) = {$year}")
+            ->whereRaw("month(published_at) = {$month}");
     }
     
 }

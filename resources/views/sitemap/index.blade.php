@@ -30,7 +30,7 @@
     @endforeach
     @foreach ($blogarticles as $blogarticle)
         <url>
-            <loc>{{ secure_url(route('blog.show', [$blogarticle->published_at->format('Y'), $blogarticle->published_at->format('j'), $blogarticle->slug], false)) }}</loc>
+            <loc>{{ secure_url(route('blog.show', [$blogarticle->published_at->format('Y'), $blogarticle->published_at->format('n'), $blogarticle->slug], false)) }}</loc>
         </url>
     @endforeach
     <url>

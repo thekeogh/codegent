@@ -71,9 +71,9 @@ class BlogController extends Controller
     /**
      * Show article
      */
-    public function show($year, $day, $slug)
+    public function show($year, $month, $slug)
     {
-        $article = BlogArticle::show($slug)->first();
+        $article = BlogArticle::show($year, $month, $slug)->first();
         if (! $article) return app()->abort(404);
         return view('blog.show', compact('article'));
     }
