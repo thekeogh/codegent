@@ -6,6 +6,11 @@
   &__title {
     margin: 0 0 24px;
     font-size: 28px;
+    a {
+      top: -3px;
+      position: relative;
+      .material-icons { font-size: 20px }
+    }
   }
   &__sidetitle {
     margin: 0 0 16px;

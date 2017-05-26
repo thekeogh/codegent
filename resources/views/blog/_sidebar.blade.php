@@ -13,7 +13,7 @@
             <ul class="Sidebar__items">
                 <li class="Sidebar__item"><a href="{{ route('blog.index') }}" class="Sidebar__itemlink" style="{{ !$selected_category ? 'font-weight: bold' : null }}">All articles</a></li>
                 @foreach ($categories as $category)
-                    <li class="Sidebar__item"><a href="{{ route('blog.category', $category->slug) }}" class="Sidebar__itemlink" style="{{ $selected_category == $category->slug ? 'font-weight: bold' : null }}">{{ $category->title }}</a></li>
+                    <li class="Sidebar__item"><a href="{{ route('blog.category', $category->slug) }}" class="Sidebar__itemlink" style="{{ ($selected_category and $selected_category->slug == $category->slug) ? 'font-weight: bold' : null }}">{{ $category->title }}</a></li>
                 @endforeach
             </ul>
         </section>

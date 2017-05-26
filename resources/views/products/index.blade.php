@@ -1,6 +1,6 @@
 @extends('layouts.www')
 @section('title', 'Digital products, joint ventures, mobile apps &amp; SaaS startups')
-@section('description', 'We are a digital product studio based in Old Street London. We\'ve built startups such as ScreenCloud &amp; Tepilo. We own digital UX/UI agency Thin Martian')
+@section('description', 'Our digital product startup studio has invested in, branded, designed &amp; developed multiple platforms such as ScreenCloud, Twilert, Tepilo &amp; Kizzu')
 @section('image', cdn('img/og/products.jpg'))
 @section('body_class', 'Products')
 
@@ -15,11 +15,11 @@
                 </div>
                 <div class="CarouselProducts__slide CarouselProducts__slide--tepilo">
                     <h1 class="CarouselProducts__logo" title="Tepilo">Tepilo</h1>
-                    <a href="https://tepilo.com" class="Button Button--box" target="_blank">visit website</a>
+                    <a href="https://www.tepilo.com" class="Button Button--box" target="_blank">visit website</a>
                 </div>
                 <div class="CarouselProducts__slide CarouselProducts__slide--twilert">
                     <h1 class="CarouselProducts__logo" title="Twilert">Twilert</h1>
-                    <a href="https://twilert.com" class="Button Button--box" target="_blank">visit website</a>
+                    <a href="https://www.twilert.com" class="Button Button--box" target="_blank">visit website</a>
                 </div>
             </div>
         </div>
@@ -69,7 +69,8 @@
         @include('components.product', [
             'name' => 'Flow',
             'image' => 'theflowapp.png',
-            'url' => 'https://www.youtube.com/watch?v=rhD6WiLAJ9o?rel=0&controls=0&showinfo=0',
+            'url' => 'https://www.youtube.com/embed/rhD6WiLAJ9o?autoplay=1&amp;controls=0&amp;showinfo=0',
+            'overlay' => true,
             'visit' => 'see video',
             'state' => 'No longer active',
             'description' => 'Instagram has no dedicated iPad app despite the fact that many people enjoy skimming photos on the tablet. We set out to fix that with Flow. Our launch was well received by the tech press, we\'ve been featured by Apple and we continue to add several thousand new users per day.'
@@ -77,7 +78,8 @@
         @include('components.product', [
             'name' => 'Moovrs',
             'image' => 'moovrs.png',
-            'url' => 'https://www.youtube.com/watch?v=W-up1Fxo3KU?rel=0&controls=0&showinfo=0',
+            'url' => 'https://www.youtube.com/embed/W-up1Fxo3KU?autoplay=1&amp;controls=0&amp;showinfo=0',
+            'overlay' => true,
             'visit' => 'see video',
             'state' => 'No longer active',
             'description' => 'Moovrs is a free iOS mobile app that put\'s the fun back into your property search. Delicately combining entertainment and practicality, Moovrs focuses on the 3 P\'s - Place, Price and Pictures.'

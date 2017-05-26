@@ -139,10 +139,10 @@
       .material-icons { display: block }
     }
   }
-  &.Redirects .AdminNav__item--redirects { color: $Color__orange__brand !important }
-  &.Categories .AdminNav__item--blogcats { color: $Color__orange__brand !important }
-  &.Articles .AdminNav__item--blogarticles { color: $Color__orange__brand !important }
-  &.Tags .AdminNav__item--tags { color: $Color__orange__brand !important }
+  &.AdminRedirects .AdminNav__item--redirects { color: $Color__orange__brand !important }
+  &.AdminCategories .AdminNav__item--blogcats { color: $Color__orange__brand !important }
+  &.AdminArticles .AdminNav__item--blogarticles { color: $Color__orange__brand !important }
+  &.AdminTags .AdminNav__item--tags { color: $Color__orange__brand !important }
   
   /**
    * Main

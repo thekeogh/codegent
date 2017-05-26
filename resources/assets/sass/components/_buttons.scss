@@ -2,7 +2,7 @@ $Button__default--height: 45px;
 
 .Button {
   @include regular;
-  transition: opacity .3s;
+  //transition: opacity .3s;
   height: $Button__default--height;
   margin: 0;
   padding: 0 26px;

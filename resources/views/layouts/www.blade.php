@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="@yield('description', 'We are a digital product studio based in Old Street London. We\'ve built startups such as ScreenCloud &amp; Tepilo. We own digital UX/UI agency Thin Martian')">
     <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
-
+    <meta name="format-detection" content="telephone=no">
+    
     <meta property="og:type" content="@yield('type', 'website')">
     <meta property="og:site_name" content="Codegent">
     <meta property="og:title" content="@yield('title', 'London digital product &amp; startup studio : UX/UI interface agency')">
@@ -50,6 +51,12 @@
     </script>
 </head>
 <body class="@yield('body_class')">
+    
+    {{-- Overlay --}}
+    <div class="Overlay" style="display: none">
+        <a href="#" class="Overlay__close"><i class="material-icons">close</i></a>
+        <iframe src="#" frameborder="0" allowfullscreen class="Overlay__container Overlay__container--iframe"></iframe>
+    </div>
     
     <header class="Header"><div class="Wrapper">
         <a href="{{ route('home') }}"><i class="Logo Logo--small"></i></a>

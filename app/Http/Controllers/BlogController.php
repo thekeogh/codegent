@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\BlogArticle, App\BlogCategory;
+use App\BlogArticle, App\BlogCategory, App\Tag;
 
 class BlogController extends Controller
 {
@@ -28,12 +28,16 @@ class BlogController extends Controller
     public function index($category = null, $tag = null)
     {
         $listing = BlogArticle::with(['admin'])->where('status', 'live')->orderBy('published_at', 'desc');
+        $selected_category = null;
+        $selected_tag = null;
         if ($category) {
+            $selected_category = BlogCategory::where('slug', $category)->first();
             $listing->whereHas('categories', function($query) use($category) {
                 return $query->where('slug', $category);
             });
         }
         if ($tag) {
+            $selected_tag = Tag::where('slug', $tag)->first();
             $listing->whereHas('tags', function($query) use($tag) {
                 return $query->where('slug', $tag);
             });
@@ -41,8 +45,8 @@ class BlogController extends Controller
         $listing = $listing->paginate(20);
         return view('blog.index', [
             'listing' => $listing,
-            'selected_category' => $category,
-            'selected_tag' => $tag
+            'selected_category' => $selected_category,
+            'selected_tag' => $selected_tag
         ]);
     }
     

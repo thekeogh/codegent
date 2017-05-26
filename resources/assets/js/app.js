@@ -7,7 +7,9 @@ import slick from 'slick-carousel';
  */
 $(() => {
     
-    
+    /**
+     * Products carousel
+     */
     $('.CarouselProducts').slick({
         dots: false,
         infinite: true,
@@ -15,14 +17,13 @@ $(() => {
         fade: true,
         cssEase: 'linear',
         arrows: true,
-        //autoplay: true,
+        autoplay: true,
         pauseOnHover: false,
         pauseOnFocus: false,
         prevArrow: '<i class="material-icons slick-prev">keyboard_arrow_left</i>',
-        nextArrow: '<i class="material-icons slick-next">keyboard_arrow_right</i>'
-        //autoplaySpeed: 3000
+        nextArrow: '<i class="material-icons slick-next">keyboard_arrow_right</i>',
+        autoplaySpeed: 5000
     });
-    
     
     /**
      * Toggle primary nav reveal for mobile
@@ -59,12 +60,37 @@ $(() => {
     // 
     
     /**
+     * Open an overlay
+     */
+    $('.Overlayer').on('click', function(e) {
+        e.preventDefault();
+        let $overlay = $('.Overlay');
+        let $el = $(this);
+        let href = $el.attr('href');
+        let embed = href.indexOf('embed') >= 0 ? true : false;
+        if (embed) $('.Overlay__container--iframe').attr('src', href);
+        setTimeout(() => {
+            $overlay.show();
+        }, 500);
+    });
+    
+    /**
+     * Close an overlay
+     */
+    $('.Overlay__close').on('click', (e) => {
+        e.preventDefault();
+        $('.Overlay').hide();
+        
+        $('.Overlay__container--iframe').attr('src', '#');
+    })
+    
+    /**
      * Create a smoothscoll link
      *
      * @param  {Object} e The event (likely nothing, but if it's an a lets kill it)
      * @example           <a href="#id-of-element-to-scroll-to" class="Anchor"></a>
      */
-    $('.Anchor').on('click', function (e) {
+    $('.Anchor').on('click', function(e) {
         e.preventDefault();
         $.smoothScroll({
             scrollTarget: $(this).attr('href')

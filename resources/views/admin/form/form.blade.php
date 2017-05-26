@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title', str_plural($what) . ($type == 'create' ? ' - Create new' : ' - Edit'))
-@section('body_class', ucwords(str_plural($what)))
+@section('body_class', 'Admin' . ucwords(str_plural($what)))
 
 @inject('form', 'App\Services\Admin\Form')
 

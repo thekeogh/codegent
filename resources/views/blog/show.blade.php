@@ -14,7 +14,10 @@
 
     <main class="Main"><div class="Wrapper">
         
-        <h1 class="Thinking__title">@yield('title')</h1>
+        <h1 class="Thinking__title">
+            @yield('title')
+            <a href="{{ route('blog.index') }}"><i class="material-icons">close</i></a>
+        </h1>
         
         <div class="Blog">
             <div class="Content">

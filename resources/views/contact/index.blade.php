@@ -1,5 +1,5 @@
 @extends('layouts.www')
-@section('title', 'Contact Codegent in Holborn Viaduct, Holborn, London, UK')
+@section('title', 'Contact Codegent in Old Street, Shoreditch, London, UK')
 @section('description', 'Email hello@codegent.com, fill out our contact form or connect with us on social')
 @section('image', cdn('img/og/contact.jpg'))
 @section('body_class', 'Contact')
