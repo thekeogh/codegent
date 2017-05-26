@@ -10397,6 +10397,15 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
         $secondary.is(':visible') ? $secondary.slideUp(200) : $secondary.slideDown(200);
     });
 
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('select[name="type"]').on('change', function () {
+        var $cv = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.Form__row--cv');
+        if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).val() == 'Agency') {
+            $cv.show();
+        } else {
+            $cv.hide();
+        }
+    });
+
     //
     // Utils
     // 

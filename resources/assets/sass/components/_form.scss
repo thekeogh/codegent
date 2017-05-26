@@ -41,6 +41,12 @@ input:focus, select:focus, textarea:focus, button:focus { outline: none }
     &--errored {
       border-color: #cc0000
     }
+    &--file {
+      font-size: 14px;
+      color: #000 !important;
+      align-items: center;
+      display: flex;
+    }
   }
   &__errors, &__success {
     @include bold;

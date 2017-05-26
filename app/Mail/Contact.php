@@ -42,7 +42,21 @@ class Contact extends Mailable
         return $this
             ->to($this->address())
             ->subject("{$this->type} enquiry from codegent.com")
+            ->attach($this->cv())
             ->view('emails.contact');
+    }
+    
+    /**
+     * Upload a cv and return the path
+     * 
+     * @return string
+     */
+    protected function cv()
+    {
+        $cv = request()->file('cv');
+        if (! $cv) return;
+        $uploaded = $cv->store('cv');
+        return config('filesystems.disks.local.root') . '/' . $uploaded;
     }
     
     /**

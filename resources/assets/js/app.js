@@ -53,6 +53,15 @@ $(() => {
         $parent.toggleClass('Primary__item--secondary');
         $secondary.is(':visible') ? $secondary.slideUp(200) : $secondary.slideDown(200);
         
+    });
+    
+    $('select[name="type"]').on('change', function() {
+        let $cv = $('.Form__row--cv');
+        if ($(this).val() == 'Agency') {
+            $cv.show();
+        } else {
+            $cv.hide();
+        }
     })
     
     //
