@@ -37,12 +37,12 @@
                 <label for="type" class="Form__label">Type:*</label>
                 <select name="type" id="type" class="Form__element {{ $errors->has('type') ? 'Form__element--errored' : null }}">
                     <option value="">Enquiry type...</option>
-                    <option value="Hello">Saying hello</option>
-                    <option value="Products">Working on products</option>
-                    <option value="Agency">Working in agency</option>
+                    <option value="Hello" {{ old('type') == 'Hello' ? 'selected' : null }}>Saying hello</option>
+                    <option value="Products" {{ old('type') == 'Products' ? 'selected' : null }}>Working on products</option>
+                    <option value="Agency" {{ old('type') == 'Agency' ? 'selected' : null }}>Working in agency</option>
                 </select>
             </div>
-            <div class="Form__row Form__row--cv" style="display: none;">
+            <div class="Form__row Form__row--cv" style="{{ ! in_array(old('type'), ['Products', 'Agency']) ? 'display:none' : null  }}">
                 <label for="cv" class="Form__label">Upload CV:</label>
                 <input type="file" name="cv" id="cv" placeholder="Upload your CV" class="Form__element Form__element--file {{ $errors->has('cv') ? 'Form__element--errored' : null }}">
             </div>

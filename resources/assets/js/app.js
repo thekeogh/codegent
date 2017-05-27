@@ -55,9 +55,12 @@ $(() => {
         
     });
     
+    /**
+     * Reveal CV field on contact form
+     */
     $('select[name="type"]').on('change', function() {
         let $cv = $('.Form__row--cv');
-        if ($(this).val() == 'Agency') {
+        if ($(this).val() == 'Agency' || $(this).val() == 'Products') {
             $cv.show();
         } else {
             $cv.hide();
