@@ -48,7 +48,7 @@
             </div>
             <div class="Form__row Form__row--top">
                 <label for="message" class="Form__label">Message:*</label>
-                <textarea name="message" id="message" value="{{ old('message') }}" rows="8" placeholder="How can we help?" class="Form__element {{ $errors->has('message') ? 'Form__element--errored' : null }}"></textarea>
+                <textarea name="message" id="message" rows="8" placeholder="How can we help?" class="Form__element {{ $errors->has('message') ? 'Form__element--errored' : null }}">{{ old('message') }}</textarea>
             </div>
             <div class="Form__row Form__row--buttons">
                 <button type="submit" class="Button Button--box">Send</button>

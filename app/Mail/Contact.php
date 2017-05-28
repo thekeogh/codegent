@@ -39,11 +39,15 @@ class Contact extends Mailable
      */
     public function build()
     {
-        return $this
+        $mail = $this
             ->to($this->address())
-            ->subject("{$this->type} enquiry from codegent.com")
-            ->attach($this->cv())
-            ->view('emails.contact');
+            ->subject("{$this->type} enquiry from codegent.com");
+            
+        if ($cv = $this->cv()) {
+            $mail->attach($this->cv());
+        }
+        
+        return $mail->view('emails.contact');
     }
     
     /**

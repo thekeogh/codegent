@@ -35,7 +35,7 @@ class ArticlesSeeder extends Seeder
                 'slug' => $old->slug,
                 'summary' => $old->summary,
                 'body' => $old->content,
-                'image_url' => $media ? "https://codegent-codegentltd.netdna-ssl.com/media/thumb/{$media->uuid}/269x293_{$media->focus_x}_{$media->focus_y}.jpg" : null,
+                'image_url' => $media ? "https://codegent-codegentltd.netdna-ssl.com/media/thumb/{$media->uuid}/269x293_{$media->focus_x}_{$media->focus_y}." . pathinfo($media->source_url)['extension'] : null,
                 'video_url' => $video_url,
                 'published_at' => $old->published_date,
                 'created_at' => $old->created_at,
