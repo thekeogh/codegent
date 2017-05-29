@@ -41,6 +41,7 @@ class Contact extends Mailable
     {
         $mail = $this
             ->to($this->address())
+            ->replyto($this->email)
             ->subject("{$this->type} enquiry from codegent.com");
             
         if ($cv = $this->cv()) {
