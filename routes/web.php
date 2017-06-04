@@ -24,9 +24,6 @@ Route::get('contact', ['uses' => 'ContactController@index', 'as' => 'contact']);
 Route::post('contact', ['uses' => 'ContactController@contacting', 'as' => 'contacting']);
 Route::get("sitemap.xml", ["uses" => "SitemapController@index"]);
 Route::get("sitemap", ["uses" => "SitemapController@index"]);
-Route::get(".well-known", function() {
-    return;
-});
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', function() { return redirect()->route('redirects.index'); });
