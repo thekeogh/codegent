@@ -47,7 +47,7 @@
                                 <param name="flashvars" value="thumbPath={{ large($article->image_url, '845x475') }}&amp;filePath={{ $article->video_url }}&amp;notYoutube=0&amp;autoPlay=no&amp;viewMode=fitCrop&amp;smoothing=1">
                             </object>
                         @else
-                            <video src="{{ $article->video_url }}" controls poster="{{ large($article->image_url, '845x475_50_50', 'thumb') }}" preload="auto"></video>
+                            <video src="{{ $article->video_url }}" controls poster="{{ str_contains($article->video_url, '/flv/') ? $article->image_url : large($article->image_url, '845x475_50_50', 'thumb') }}" preload="auto"></video>
                         @endif
                     </div>
                 @elseif ($article->image_url)
