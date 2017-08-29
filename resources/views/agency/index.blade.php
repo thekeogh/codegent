@@ -18,7 +18,7 @@
     </div>
     <div class="Sub Thinmartian" id="more"><div class="Wrapper">
         <div class="Thinmartian__logo"><img src="{{ cdn('img/logos/thin-martian.svg') }}" alt="Thin Martian" title="Thin Martian"></div>
-        <p class="Thinmartian__content">In 2012 we acquired digital agency Thin Martian who have been around for even longer than us. We merged the two agency businesses together and now all our client creative services are done under the Thin Martian brand.</p>
+        <p class="Thinmartian__content">In 2012 we acquired digital agency Thin Martian who had been around for even longer than us. We merged the two agency businesses together and all client creative services were done under the Thin Martian brand. In 2017 we sold Thin Martian to the Konekt Group (LINK http://www.konektgroup.com/) - a fast-growing new generation of digital agencies.</p>
         <a href="https://www.thinmartian.com" class="Button Button--box" target="_blank">visit website</a>
     </div></div>
     
