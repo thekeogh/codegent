@@ -17,7 +17,9 @@
                 </div>
             @endif
             
-            @if ($errors->count())
+            @if (session('captcha')) 
+             <div class="Form__errors">{{ session('captcha') }}</div>
+            @elseif ($errors->count())
                 <div class="Form__errors">
                     @foreach ($errors->all() as $error)
                         {{ $error }}<br>
@@ -49,6 +51,9 @@
             <div class="Form__row Form__row--top">
                 <label for="message" class="Form__label">Message:*</label>
                 <textarea name="message" id="message" rows="8" placeholder="How can we help?" class="Form__element {{ $errors->has('message') ? 'Form__element--errored' : null }}">{{ old('message') }}</textarea>
+            </div>
+            <div class="Form__row Form__row--buttons">
+              <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_KEY') }}"></div>
             </div>
             <div class="Form__row Form__row--buttons">
                 <button type="submit" class="Button Button--box">Send</button>

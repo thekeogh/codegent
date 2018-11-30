@@ -15,6 +15,12 @@ class ContactForm extends FormRequest
     {
         return true;
     }
+    
+    public function attributes() {
+      return [
+        'g-recaptcha-response' => 'reCAPTCHA'
+      ];
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -28,6 +34,7 @@ class ContactForm extends FormRequest
             'email' => 'required|email',
             'type' => 'required',
             'message' => 'required',
+            //'g-recaptcha-response' => 'required'
         ];
     }
 }
