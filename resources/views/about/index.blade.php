@@ -17,7 +17,7 @@
     </div>
     <div class="Sub" id="founders"><div class="Wrapper">
         
-        <ul class="Founders">
+        <ul class="Founders" style="justify-content: center">
             <li class="Founders__founder">
                 <img src="{{ cdn('img/faces/mark.jpg') }}" alt="Mark McDermott" title="Mark McDermott" class="Founders__image">
                 <h2 class="Founders__name">Mark McDermott</h2>
@@ -34,14 +34,14 @@
                     <a href="https://www.linkedin.com/in/davidhartcodegent" class="Founders__social" target="_blank" title="David's LinkedIn"><i class="socicon-linkedin"></i></a>
                 </p>
             </li>
-            <li class="Founders__founder">
+            {{-- <li class="Founders__founder">
                 <img src="{{ cdn('img/faces/luke.jpg') }}" alt="Luke Hubbard" title="Luke Hubbard" class="Founders__image">
                 <h2 class="Founders__name">Luke Hubbard</h2>
                 <p class="Founders__socials">
                     <a href="https://www.twitter.com/lukeinth" class="Founders__social" target="_blank" title="Luke's Twitter"><i class="socicon-twitter"></i></a>
                     <a href="https://www.linkedin.com/in/luke-hubbard-857b189b" class="Founders__social" target="_blank" title="Luke's LinkedIn"><i class="socicon-linkedin"></i></a>
                 </p>
-            </li>
+            </li> --}}
         </ul>
         
     </div></div>
