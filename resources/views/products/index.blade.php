@@ -42,7 +42,7 @@
             'name' => 'Tepilo',
             'image' => 'tepilo.png',
             'url' => 'https://www.tepilo.com',
-            'state' => 'Active - Investment Raised',
+            'state' => 'Merged with <a href="https://www.emoov.co.uk/" target="_blank">Emoov</a>',
             'description' => 'Tepilo is an Online-only Estate Agency (OEA), which we co-founded with TV\'s Sarah Beeny. It advertises homes on Rightmove and Zoopla and provides estate agency services from a single call-centre and automates the process of uploading property, setting viewing appointments, making offers and collating documentation for conveyancing.'
         ])
         @include('components.product', [
@@ -101,7 +101,7 @@
         @include('components.product', [
             'name' => 'Red5',
             'image' => 'red5.png',
-            'url' => 'http://www.red5.org/',
+            'url' => 'http://red5.org/',
             'state' => 'No longer involved',
             'description' => 'Back in 2005 we helped pioneer one of the first, and most successful, Open Source Flash Projects. Red5 is a Flash Media Server that helps deliver a powerful video streaming and multi-user solution to projects. It even powered Facebook’s self-record video feature!'
         ])
