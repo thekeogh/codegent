@@ -34,7 +34,7 @@ class ContactForm extends FormRequest
             'email' => 'required|email',
             'type' => 'required',
             'message' => 'required',
-            //'g-recaptcha-response' => 'required'
+            'g-recaptcha-response' => 'required'
         ];
     }
 }
